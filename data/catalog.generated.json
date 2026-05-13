@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "旅遊書目錄",
+    "language": "zh-Hant"
+  },
+  "hero": {
+    "eyebrow": "TRIP LIBRARY",
+    "title": [
+      "旅遊書目錄"
+    ],
+    "lead": "選擇一份行程開始閱讀。",
+    "image": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg",
+    "meta": [
+      "目前 1 份行程",
+      "自動整理資料"
+    ]
+  },
+  "catalog": {
+    "kicker": "Trips",
+    "title": "行程清單",
+    "note": ""
+  },
+  "trips": [
+    {
+      "id": "fukuoka-2026",
+      "title": "福岡五天四夜旅行手冊｜博多・太宰府・柳川・海之中道・大濠公園",
+      "subtitle": "福岡五天四夜 深度旅行手冊",
+      "description": "五天裡，從博多的地方信仰出發，走進太宰府的古代九州脈絡、柳川的水鄉與藩主文化、海之中道的海洋展示，最後用大濠公園與福岡城跡收束城市記憶。",
+      "data": "data/fukuoka-2026/trip.json",
+      "image": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg",
+      "imageAlt": "福岡五天四夜旅行手冊｜博多・太宰府・柳川・海之中道・大濠公園 cover",
+      "days": 5,
+      "nights": 4,
+      "base": "天神 / 中洲川端 / 天神南",
+      "dateRange": "2026/6/11（四） 到 6/15（一）",
+      "updated": "2026-05-13",
+      "tags": [
+        "旅程概覽",
+        "行前準備",
+        "每日行程",
+        "美食策略",
+        "資料來源"
+      ],
+      "actionLabel": "Open 福岡五天四夜旅行手冊｜博多・太宰府・柳川・海之中道・大濠公園"
+    }
+  ],
+  "footer": ""
+}
