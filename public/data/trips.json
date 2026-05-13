@@ -12,7 +12,7 @@
     "lead": "選擇一份行程開始閱讀。每份行程都有固定 ID，頁面會依照 ID 載入對應的 JSON 資料源。",
     "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
     "meta": [
-      "目前 1 份行程",
+      "目前 2 份行程",
       "以 JSON 管理資料源",
       "可擴充多個目的地"
     ]
@@ -29,6 +29,26 @@
     "note": ""
   },
   "trips": [
+    {
+      "id": "component-demo",
+      "title": "旅遊書元件展示 Demo",
+      "subtitle": "Cover・Overview・Preparation・Days・Sources",
+      "description": "刻意把目前已實作的 semantic blocks 全部展示一次，用來檢視元件長相、JSON schema 與後續擴充方向。",
+      "data": "data/component-demo/trip.json",
+      "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+      "imageAlt": "旅遊書元件展示 Demo 封面",
+      "days": 2,
+      "nights": 0,
+      "base": "Component Catalog",
+      "updated": "2026-05-13",
+      "tags": [
+        "Demo",
+        "Schema v2",
+        "Blocks",
+        "Entities"
+      ],
+      "actionLabel": "打開元件展示"
+    },
     {
       "id": "fukuoka",
       "title": "福岡五天四夜城市導覽手冊",
