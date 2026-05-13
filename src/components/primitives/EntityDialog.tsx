@@ -1,22 +1,61 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "../ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "../ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "../ui/dialog";
 import type { Entity } from "../../schema/entity";
 import { AddressLink } from "./AddressLink";
 import { YouTubeEmbed } from "./YouTubeEmbed";
 
 export function EntityDialog({
   entity,
-  trigger
+  open,
+  onOpenChange,
+  previousEntity,
+  nextEntity,
+  onPrevious,
+  onNext
 }: {
-  entity: Entity;
-  trigger: React.ReactNode;
+  entity?: Entity;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  previousEntity?: Entity;
+  nextEntity?: Entity;
+  onPrevious?: () => void;
+  onNext?: () => void;
 }) {
+  if (!entity) {
+    return null;
+  }
+
   const detail = entity.detail;
+  const navigationButtonClass =
+    "flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-[var(--paper)]/95 text-[var(--foreground)] shadow-[var(--shadow-soft)] backdrop-blur transition hover:bg-[var(--soft)] disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-[var(--paper)]/95";
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent
+        controls={
+          <>
+          <button
+            className={navigationButtonClass}
+            type="button"
+            onClick={onPrevious}
+            disabled={!previousEntity || !onPrevious}
+            aria-label={previousEntity ? `上一個：${previousEntity.title}` : "沒有上一個景點"}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            className={navigationButtonClass}
+            type="button"
+            onClick={onNext}
+            disabled={!nextEntity || !onNext}
+            aria-label={nextEntity ? `下一個：${nextEntity.title}` : "沒有下一個景點"}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          </>
+        }
+      >
         {entity.image ? (
           <div className="h-[260px] overflow-hidden rounded-t-[var(--radius-modal)] bg-[var(--soft)] md:h-[340px]">
             <img className="h-full w-full object-cover" src={entity.image.src} alt={entity.image.alt} />

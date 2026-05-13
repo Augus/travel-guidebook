@@ -4,6 +4,8 @@ import type { Entity } from "../schema/entity";
 export type BlockProps<T extends Block = Block> = {
   block: T;
   entities: Map<string, Entity>;
+  scope?: string;
+  onOpenEntity?: (scope: string, entityId: string) => void;
 };
 
 export type BlockComponent<T extends Block = Block> = (props: BlockProps<T>) => React.ReactElement | null;

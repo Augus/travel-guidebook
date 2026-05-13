@@ -1,6 +1,5 @@
 import { Building2, CircleHelp, ExternalLink, Hotel, Landmark, MapPin, Trees, Train, Utensils } from "lucide-react";
 import { AddressLink } from "../components/primitives/AddressLink";
-import { EntityDialog } from "../components/primitives/EntityDialog";
 import { RouteTrail } from "../components/primitives/RouteTrail";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -128,7 +127,7 @@ export function DailyScheduleBlock({ block }: BlockProps<DailyScheduleBlockType>
   return <TableView table={block.data.table} />;
 }
 
-export function RecommendedStopsBlock({ block, entities }: BlockProps<RecommendedStopsBlockType>) {
+export function RecommendedStopsBlock({ block, entities, scope, onOpenEntity }: BlockProps<RecommendedStopsBlockType>) {
   return (
     <div className="grid gap-4">
       {block.data.items.map((item) => {
@@ -138,8 +137,9 @@ export function RecommendedStopsBlock({ block, entities }: BlockProps<Recommende
         const summary = item.description ?? entity?.summary?.[0] ?? "";
         const typeMeta = getEntityTypeMeta(entity?.type);
         const TypeIcon = typeMeta.Icon;
-        const card = (
-          <Card className="cursor-pointer transition hover:border-[var(--accent-2)]" key={item.entityId}>
+        const isInteractive = block.data.interaction === "dialog" && entity && scope && onOpenEntity;
+        const content = (
+          <Card className="h-full transition group-hover:border-[var(--accent-2)] group-hover:shadow-[var(--shadow-soft)]">
             <CardContent className="grid gap-4 md:grid-cols-[180px_1fr]">
               {image ? <img className="h-[210px] w-full rounded-2xl object-cover md:h-[140px]" src={image.src} alt={image.alt} /> : null}
               <div>
@@ -170,11 +170,26 @@ export function RecommendedStopsBlock({ block, entities }: BlockProps<Recommende
           </Card>
         );
 
-        if (block.data.interaction === "dialog" && entity) {
-          return <EntityDialog entity={entity} trigger={card} key={item.entityId} />;
+        if (isInteractive) {
+          return (
+            <button
+              className="group block w-full cursor-pointer rounded-[var(--radius-card)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+              data-entity-id={item.entityId}
+              data-scope={scope}
+              key={item.entityId}
+              type="button"
+              onClick={() => onOpenEntity(scope, item.entityId)}
+            >
+              {content}
+            </button>
+          );
         }
 
-        return card;
+        return (
+          <div data-entity-id={item.entityId} data-scope={scope} key={item.entityId}>
+            {content}
+          </div>
+        );
       })}
     </div>
   );

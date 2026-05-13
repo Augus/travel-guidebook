@@ -40,6 +40,7 @@ export function CatalogPage({ catalog }: { catalog: Catalog }) {
                 key={trip.id}
                 to="/trip/$tripId"
                 params={{ tripId: trip.id }}
+                search={{ scope: undefined, entity: undefined }}
               >
                 <Card className="overflow-hidden transition group-hover:border-[var(--accent-2)] group-hover:shadow-[var(--shadow)]">
                   <div className="grid lg:grid-cols-[minmax(320px,0.95fr)_1fr]">

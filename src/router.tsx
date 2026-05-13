@@ -5,6 +5,7 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  useNavigate,
   useLoaderData
 } from "@tanstack/react-router";
 import { CatalogPage } from "./templates/CatalogPage";
@@ -28,13 +29,36 @@ const indexRoute = createRoute({
 const tripRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/trip/$tripId",
+  validateSearch: (search: Record<string, unknown>) => ({
+    scope: typeof search.scope === "string" ? search.scope : undefined,
+    entity: typeof search.entity === "string" ? search.entity : undefined
+  }),
   loader: async ({ params }) => {
     const catalog = await loadCatalog();
     return loadTrip(catalog, params.tripId);
   },
   component: function TripRoute() {
     const { trip } = useLoaderData({ from: "/trip/$tripId" });
-    return <TravelGuidePage trip={trip} />;
+    const search = tripRoute.useSearch();
+    const navigate = useNavigate({ from: "/trip/$tripId" });
+
+    return (
+      <TravelGuidePage
+        trip={trip}
+        modalState={search}
+        setModalState={(next) => {
+          navigate({
+            search: (prev) => ({
+              ...prev,
+              scope: next.scope,
+              entity: next.entity
+            }),
+            replace: next.replace,
+            resetScroll: false
+          });
+        }}
+      />
+    );
   }
 });
 

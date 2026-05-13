@@ -2,7 +2,10 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useMemo } from "react";
 import { BlockRenderer } from "../blocks/registry";
+import { EntityDialog } from "../components/primitives/EntityDialog";
 import { Button } from "../components/ui/button";
+import type { Entity } from "../schema/entity";
+import type { Block } from "../schema/blocks";
 import type { Trip } from "../schema/trip";
 
 function buildNavigation(trip: Trip) {
@@ -30,26 +33,8 @@ function scrollToSection(id: string) {
     return;
   }
 
-  const start = window.scrollY;
-  const end = target.getBoundingClientRect().top + window.scrollY - 12;
-  const distance = end - start;
-  const duration = 260;
-  const startedAt = performance.now();
-
-  function easeOutCubic(value: number) {
-    return 1 - Math.pow(1 - value, 3);
-  }
-
-  function step(now: number) {
-    const progress = Math.min((now - startedAt) / duration, 1);
-    window.scrollTo(0, start + distance * easeOutCubic(progress));
-
-    if (progress < 1) {
-      window.requestAnimationFrame(step);
-    }
-  }
-
-  window.requestAnimationFrame(step);
+  const top = target.getBoundingClientRect().top + window.scrollY - 12;
+  window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
 }
 
 function getBlockSessionId(sectionId: string, blockType: string, index: number) {
@@ -64,9 +49,102 @@ function getBlockSessionId(sectionId: string, blockType: string, index: number) 
   return index === 0 ? sectionId : `${sectionId}-${blockType}-${index + 1}`;
 }
 
-export function TravelGuidePage({ trip }: { trip: Trip }) {
+function scrollToEntityCard(scope?: string, entityId?: string, behavior: ScrollBehavior = "auto") {
+  if (!scope || !entityId) {
+    return;
+  }
+
+  const target = Array.from(document.querySelectorAll<HTMLElement>("[data-scope][data-entity-id]")).find(
+    (element) => element.dataset.scope === scope && element.dataset.entityId === entityId
+  );
+
+  if (!target) {
+    document.getElementById(scope)?.scrollIntoView({ block: "start", behavior });
+    return;
+  }
+
+  const top = target.getBoundingClientRect().top + window.scrollY - 96;
+  window.scrollTo({ top: Math.max(0, top), behavior });
+}
+
+function getEntityIdsFromBlocks(blocks: Block[]) {
+  return blocks.flatMap((block) => {
+    if (block.type !== "recommendedStops" || block.data.interaction !== "dialog") {
+      return [];
+    }
+
+    return block.data.items.map((item) => item.entityId);
+  });
+}
+
+function buildEntityScopes(trip: Trip) {
+  const scopes = new Map<string, string[]>();
+
+  trip.sections.forEach((section) => {
+    section.blocks.forEach((block, index) => {
+      const ids = getEntityIdsFromBlocks([block]);
+
+      if (ids.length) {
+        scopes.set(getBlockSessionId(section.id, block.type, index), ids);
+      }
+    });
+
+    section.days?.forEach((day) => {
+      const ids = getEntityIdsFromBlocks(day.blocks);
+
+      if (ids.length) {
+        scopes.set(day.id, ids);
+      }
+    });
+  });
+
+  return scopes;
+}
+
+type ModalState = {
+  scope?: string;
+  entity?: string;
+};
+
+type SetModalStateInput = ModalState & {
+  replace?: boolean;
+};
+
+export function TravelGuidePage({
+  trip,
+  modalState,
+  setModalState
+}: {
+  trip: Trip;
+  modalState: ModalState;
+  setModalState: (next: SetModalStateInput) => void;
+}) {
   const entities = useMemo(() => new Map(trip.content.entities.map((entity) => [entity.id, entity])), [trip.content.entities]);
   const navigation = useMemo(() => buildNavigation(trip), [trip]);
+  const entityScopes = useMemo(() => buildEntityScopes(trip), [trip]);
+  const currentEntity = modalState.entity ? entities.get(modalState.entity) : undefined;
+  const currentScopeIds = modalState.scope ? (entityScopes.get(modalState.scope) ?? []) : [];
+  const currentIndex = modalState.entity ? currentScopeIds.indexOf(modalState.entity) : -1;
+  const previousEntity = currentIndex > 0 ? entities.get(currentScopeIds[currentIndex - 1]) : undefined;
+  const nextEntity = currentIndex >= 0 && currentIndex < currentScopeIds.length - 1 ? entities.get(currentScopeIds[currentIndex + 1]) : undefined;
+
+  function openEntity(scope: string, entity: string) {
+    setModalState({ scope, entity });
+  }
+
+  function closeEntityDialog() {
+    setModalState({ scope: undefined, entity: undefined });
+  }
+
+  function moveEntity(direction: -1 | 1) {
+    const nextId = currentScopeIds[currentIndex + direction];
+
+    if (!nextId || !modalState.scope) {
+      return;
+    }
+
+    setModalState({ scope: modalState.scope, entity: nextId, replace: true });
+  }
 
   useEffect(() => {
     document.documentElement.lang = trip.meta.language;
@@ -77,6 +155,16 @@ export function TravelGuidePage({ trip }: { trip: Trip }) {
       delete document.body.dataset.theme;
     };
   }, [trip.meta.language, trip.meta.title, trip.theme]);
+
+  useEffect(() => {
+    if (!currentEntity) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      scrollToEntityCard(modalState.scope, modalState.entity, "auto");
+    });
+  }, [currentEntity, modalState.entity, modalState.scope]);
 
   return (
     <div data-theme={trip.theme} className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -89,7 +177,7 @@ export function TravelGuidePage({ trip }: { trip: Trip }) {
         </Button>
         {trip.sections
           .find((section) => section.id === "cover")
-          ?.blocks.map((block, index) => <BlockRenderer block={block} entities={entities} key={`${block.type}-${index}`} />)}
+          ?.blocks.map((block, index) => <BlockRenderer block={block} entities={entities} onOpenEntity={openEntity} key={`${block.type}-${index}`} />)}
       </header>
 
       {navigation.length ? (
@@ -122,7 +210,7 @@ export function TravelGuidePage({ trip }: { trip: Trip }) {
                 id={getBlockSessionId(section.id, block.type, index)}
                 key={`${section.id}-${block.type}-${index}`}
               >
-                <BlockRenderer block={block} entities={entities} />
+                <BlockRenderer block={block} entities={entities} scope={getBlockSessionId(section.id, block.type, index)} onOpenEntity={openEntity} />
               </section>
             )),
             ...(section.days?.map((day) => (
@@ -140,13 +228,26 @@ export function TravelGuidePage({ trip }: { trip: Trip }) {
                 </div>
                 <div className="grid gap-5">
                   {day.blocks.map((block, index) => (
-                    <BlockRenderer block={block} entities={entities} key={`${day.id}-${block.type}-${index}`} />
+                    <BlockRenderer block={block} entities={entities} scope={day.id} onOpenEntity={openEntity} key={`${day.id}-${block.type}-${index}`} />
                   ))}
                 </div>
               </article>
             )) ?? [])
           ])}
       </main>
+      <EntityDialog
+        entity={currentEntity}
+        open={Boolean(currentEntity)}
+        onOpenChange={(open) => {
+          if (!open) {
+            closeEntityDialog();
+          }
+        }}
+        previousEntity={previousEntity}
+        nextEntity={nextEntity}
+        onPrevious={previousEntity ? () => moveEntity(-1) : undefined}
+        onNext={nextEntity ? () => moveEntity(1) : undefined}
+      />
     </div>
   );
 }
