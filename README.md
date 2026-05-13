@@ -52,10 +52,9 @@ https://example.com/index.html#/trip/fukuoka
 資料：
 
 ```text
-public/data/trips.json
-public/data/fukuoka/trip.json
-public/data/fukuoka/images/
-public/data/component-demo/trip.json
+public/data/catalog.generated.json
+public/data/fukuoka-2026/trip.json
+public/data/fukuoka-2026/images/
 ```
 
 Schema：
@@ -141,14 +140,14 @@ sources
 總目錄資料在：
 
 ```text
-public/data/trips.json
+public/data/catalog.generated.json
 ```
 
 新增一本旅遊書時：
 
 1. 建立 `public/data/<trip-id>/trip.json`
 2. 建立 `public/data/<trip-id>/images/`
-3. 在 `public/data/trips.json` 的 `trips[]` 加一筆：
+3. Run `npm run generate:catalog`, or just run `npm run dev` / `npm run build`.
 
 ```json
 {
@@ -193,7 +192,7 @@ Entity example：
   "title": "博多站",
   "subtitle": "九州旅行的交通玄關",
   "image": {
-    "src": "data/fukuoka/images/hakata-station.jpg",
+    "src": "data/fukuoka-2026/images/hakata-station.jpg",
     "alt": "博多站"
   },
   "address": {
@@ -384,7 +383,7 @@ Data:
     "eyebrow": "FUKUOKA 5 DAYS GUIDE",
     "title": ["福岡五天四夜", "城市導覽手冊"],
     "lead": "封面導語。",
-    "image": "data/fukuoka/images/cover.jpg",
+    "image": "data/fukuoka-2026/images/cover.jpg",
     "meta": ["基地：博多站周邊"]
   }
 }
@@ -491,7 +490,7 @@ Data:
   "type": "dayMedia",
   "data": {
     "image": {
-      "src": "data/fukuoka/images/mojiko-retro.webp",
+      "src": "data/fukuoka-2026/images/mojiko-retro.webp",
       "alt": "門司港"
     },
     "mapEmbed": "https://www.google.com/maps?q=...&output=embed",
@@ -705,7 +704,7 @@ npm run build
 
 - 優先修改 JSON，不要硬寫內容到 React component。
 - 新景點、餐廳、飯店、車站先建 entity，再由 block 引用。
-- 圖片路徑使用 build 後可用的 public path，例如 `data/fukuoka/images/foo.jpg`。
+- 圖片路徑使用 build 後可用的 public path，例如 `data/fukuoka-2026/images/foo.jpg`。
 - 不要新增舊格式資料欄位，例如 `welcome`、`prep`、`food`。
 - 餐廳與食物安排應放進每日 `recommendedStops`，不要新增獨立 `foodPlan`。
 - 長文深度介紹放在 `entity.detail.paragraphs`。

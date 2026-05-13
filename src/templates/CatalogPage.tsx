@@ -52,7 +52,7 @@ export function CatalogPage({ catalog }: { catalog: Catalog }) {
                       />
                     ) : null}
                     <CardContent className="grid content-start gap-3 p-6 sm:p-8">
-                      <Badge className="bg-[var(--accent-2)] text-white">{trip.id}</Badge>
+                      {trip.dateRange ? <Badge className="bg-[var(--accent-2)] text-white">日期：{trip.dateRange}</Badge> : null}
                       <h3 className="text-2xl font-bold leading-tight">{trip.title}</h3>
                       {trip.subtitle ? <p className="font-bold text-[var(--accent-2)]">{trip.subtitle}</p> : null}
                       {trip.description ? <p>{trip.description}</p> : null}

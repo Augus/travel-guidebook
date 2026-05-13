@@ -9,6 +9,11 @@ import type { Entity } from "../schema/entity";
 import type { Block } from "../schema/blocks";
 import type { Trip } from "../schema/trip";
 
+type NavigationItem = {
+  href: string;
+  label: string;
+};
+
 function buildNavigation(trip: Trip) {
   return trip.sections.flatMap((section) => {
     const hasSectionSession = section.id !== "days" || section.blocks.length > 0;
@@ -25,6 +30,10 @@ function buildNavigation(trip: Trip) {
 
     return items;
   });
+}
+
+function getNavigationId(item: NavigationItem) {
+  return item.href.slice(1);
 }
 
 function scrollToSection(id: string) {
@@ -186,10 +195,13 @@ export function TravelGuidePage({
   setModalState: (next: SetModalStateInput) => void;
 }) {
   const headerRef = useRef<HTMLElement>(null);
+  const navigationScrollRef = useRef<HTMLDivElement>(null);
+  const navigationPillRefs = useRef(new Map<string, HTMLAnchorElement>());
   const [showNavigation, setShowNavigation] = useState(false);
   const [collapsedSessions, setCollapsedSessions] = useState<Set<string>>(() => readCollapsedDays(trip.meta.id));
   const entities = useMemo(() => new Map(trip.content.entities.map((entity) => [entity.id, entity])), [trip.content.entities]);
   const navigation = useMemo(() => buildNavigation(trip), [trip]);
+  const [activeNavigationId, setActiveNavigationId] = useState("");
   const entityScopes = useMemo(() => buildEntityScopes(trip), [trip]);
   const currentEntity = modalState.entity ? entities.get(modalState.entity) : undefined;
   const currentScopeIds = modalState.scope ? (entityScopes.get(modalState.scope) ?? []) : [];
@@ -255,20 +267,78 @@ export function TravelGuidePage({
   }, [currentEntity, modalState.entity, modalState.scope]);
 
   useEffect(() => {
-    function updateNavigationVisibility() {
-      const headerHeight = headerRef.current?.offsetHeight ?? window.innerHeight * 0.72;
-      setShowNavigation(window.scrollY > Math.max(120, headerHeight - 96));
+    let animationFrame = 0;
+
+    function updateNavigationState() {
+      if (animationFrame) {
+        return;
+      }
+
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        const headerHeight = headerRef.current?.offsetHeight ?? window.innerHeight * 0.72;
+        const navigationHeight = navigationScrollRef.current?.parentElement?.offsetHeight ?? 64;
+        const viewportTop = navigationHeight + 8;
+        const viewportBottom = window.innerHeight;
+        const probeLine = Math.min(window.innerHeight * 0.42, navigationHeight + 280);
+        let nextActiveNavigationId = navigation[0] ? getNavigationId(navigation[0]) : "";
+        let bestScore = Number.NEGATIVE_INFINITY;
+
+        for (const item of navigation) {
+          const id = getNavigationId(item);
+          const target = document.getElementById(id);
+
+          if (!target) {
+            continue;
+          }
+
+          const rect = target.getBoundingClientRect();
+          const visibleTop = Math.max(rect.top, viewportTop);
+          const visibleBottom = Math.min(rect.bottom, viewportBottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const crossesProbeLine = rect.top <= probeLine && rect.bottom > probeLine;
+          const score = visibleHeight + (crossesProbeLine ? window.innerHeight : 0);
+
+          if (score > bestScore) {
+            bestScore = score;
+            nextActiveNavigationId = id;
+          }
+        }
+
+        setShowNavigation(window.scrollY > Math.max(120, headerHeight - 96));
+        setActiveNavigationId((current) => (current === nextActiveNavigationId ? current : nextActiveNavigationId));
+      });
     }
 
-    updateNavigationVisibility();
-    window.addEventListener("scroll", updateNavigationVisibility, { passive: true });
-    window.addEventListener("resize", updateNavigationVisibility);
+    updateNavigationState();
+    window.addEventListener("scroll", updateNavigationState, { passive: true });
+    window.addEventListener("resize", updateNavigationState);
 
     return () => {
-      window.removeEventListener("scroll", updateNavigationVisibility);
-      window.removeEventListener("resize", updateNavigationVisibility);
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+
+      window.removeEventListener("scroll", updateNavigationState);
+      window.removeEventListener("resize", updateNavigationState);
     };
-  }, []);
+  }, [navigation]);
+
+  useEffect(() => {
+    if (!activeNavigationId || !showNavigation) {
+      return;
+    }
+
+    const container = navigationScrollRef.current;
+    const activePill = navigationPillRefs.current.get(activeNavigationId);
+
+    if (!container || !activePill) {
+      return;
+    }
+
+    const nextScrollLeft = activePill.offsetLeft + activePill.offsetWidth / 2 - container.clientWidth / 2;
+    container.scrollTo({ left: Math.max(0, nextScrollLeft), behavior: "smooth" });
+  }, [activeNavigationId, showNavigation]);
 
   return (
     <div data-theme={trip.theme} className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -281,29 +351,50 @@ export function TravelGuidePage({
         </Button>
         {trip.sections
           .find((section) => section.id === "cover")
-          ?.blocks.map((block, index) => <BlockRenderer block={block} entities={entities} onOpenEntity={openEntity} key={`${block.type}-${index}`} />)}
+          ?.blocks.map((block, index) => <BlockRenderer block={block} entities={entities} tripMeta={trip.meta} onOpenEntity={openEntity} key={`${block.type}-${index}`} />)}
       </header>
 
       {navigation.length ? (
         <nav
-          className={`fixed left-0 right-0 top-0 z-20 bg-[var(--nav-bg)] shadow-[0_10px_30px_rgba(55,43,26,0.08)] backdrop-blur transition duration-200 print:hidden ${
+          className={`fixed left-0 right-0 top-0 z-20 bg-[rgba(72,50,35,0.94)] shadow-[0_10px_30px_rgba(55,43,26,0.18)] backdrop-blur transition duration-200 print:hidden ${
             showNavigation ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-full opacity-0"
           }`}
         >
-          <div className="mx-auto flex max-w-[1180px] gap-2 overflow-auto px-5 py-3 md:px-7">
-            {navigation.map((item) => (
-              <a
-                className="shrink-0 rounded-full border border-[var(--border)] bg-[var(--paper)] px-3 py-2 text-sm text-[var(--foreground)]"
-                href={item.href}
-                onClick={(event) => {
-                  event.preventDefault();
-                  scrollToSection(item.href.slice(1));
-                }}
-                key={`${item.href}-${item.label}`}
-              >
-                {item.label}
-              </a>
-            ))}
+          <div
+            ref={navigationScrollRef}
+            className="mx-auto flex max-w-[1180px] gap-2 overflow-auto scroll-smooth px-[max(1.25rem,calc(50vw-3rem))] py-3 md:px-7"
+          >
+            {navigation.map((item) => {
+              const itemId = getNavigationId(item);
+              const isActive = itemId === activeNavigationId;
+
+              return (
+                <a
+                  aria-current={isActive ? "location" : undefined}
+                  className={`shrink-0 rounded-full border px-3.5 py-2 text-sm font-semibold leading-none transition duration-200 ${
+                    isActive
+                      ? "border-[#7a5136] bg-[#7a5136] text-white shadow-[0_8px_18px_rgba(24,16,10,0.28)] ring-2 ring-white/50"
+                      : "border-white/15 bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                  }`}
+                  href={item.href}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setActiveNavigationId(itemId);
+                    scrollToSection(itemId);
+                  }}
+                  ref={(element) => {
+                    if (element) {
+                      navigationPillRefs.current.set(itemId, element);
+                    } else {
+                      navigationPillRefs.current.delete(itemId);
+                    }
+                  }}
+                  key={`${item.href}-${item.label}`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         </nav>
       ) : null}
@@ -348,7 +439,7 @@ export function TravelGuidePage({
                   ) : null}
                   {!isCollapsed ? (
                     <div id={`${sessionId}-content`}>
-                      <BlockRenderer block={block} entities={entities} scope={sessionId} onOpenEntity={openEntity} />
+                      <BlockRenderer block={block} entities={entities} tripMeta={trip.meta} scope={sessionId} onOpenEntity={openEntity} />
                     </div>
                   ) : null}
                 </section>
@@ -392,7 +483,7 @@ export function TravelGuidePage({
                 {!isCollapsed ? (
                   <div className="grid gap-5" id={`${day.id}-content`}>
                     {day.blocks.map((block, index) => (
-                      <BlockRenderer block={block} entities={entities} scope={day.id} onOpenEntity={openEntity} key={`${day.id}-${block.type}-${index}`} />
+                      <BlockRenderer block={block} entities={entities} tripMeta={trip.meta} scope={day.id} onOpenEntity={openEntity} key={`${day.id}-${block.type}-${index}`} />
                     ))}
                   </div>
                 ) : null}

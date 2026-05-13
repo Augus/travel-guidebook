@@ -32,7 +32,7 @@ const blockRegistry = {
   guideFooter: GuideFooterBlock
 } satisfies Record<Block["type"], BlockComponent<any>>;
 
-export function BlockRenderer({ block, entities, scope, onOpenEntity }: BlockProps) {
+export function BlockRenderer({ block, entities, tripMeta, scope, onOpenEntity }: BlockProps) {
   const Component = blockRegistry[block.type] as BlockComponent<any> | undefined;
 
   if (!Component) {
@@ -43,5 +43,5 @@ export function BlockRenderer({ block, entities, scope, onOpenEntity }: BlockPro
     );
   }
 
-  return <Component block={block as never} entities={entities} scope={scope} onOpenEntity={onOpenEntity} />;
+  return <Component block={block as never} entities={entities} tripMeta={tripMeta} scope={scope} onOpenEntity={onOpenEntity} />;
 }

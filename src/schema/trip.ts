@@ -27,7 +27,12 @@ export const TripSchema = z.object({
     id: z.string(),
     title: z.string(),
     language: z.string().default("zh-Hant"),
-    printLabel: z.string().optional()
+    printLabel: z.string().optional(),
+    dateRange: z.string().optional(),
+    departure: z.string().optional(),
+    recommendedBase: z.string().optional(),
+    pace: z.string().optional(),
+    mustEat: z.array(z.string()).default([])
   }),
   content: z
     .object({
@@ -72,6 +77,7 @@ export const CatalogSchema = z.object({
         days: z.number().optional(),
         nights: z.number().optional(),
         base: z.string().optional(),
+        dateRange: z.string().optional(),
         updated: z.string().optional(),
         tags: z.array(z.string()).default([]),
         actionLabel: z.string().optional()

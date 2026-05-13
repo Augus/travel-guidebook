@@ -1,6 +1,6 @@
 import { CatalogSchema, TripSchema, type Catalog, type Trip } from "../schema/trip";
 
-const DEFAULT_CATALOG_PATH = "data/trips.json";
+const DEFAULT_CATALOG_PATH = "data/catalog.generated.json";
 
 async function fetchJson(path: string) {
   const response = await fetch(path, { cache: "no-store" });

@@ -10,7 +10,7 @@ export function GuideIntroBlock({ block }: BlockProps<GuideIntroBlockType>) {
       <div className="grid gap-7">
         <div className="max-w-[860px]">
           <SectionHeader kicker={block.data.kicker} title={block.data.title} />
-          {block.data.body ? <p className="max-w-[780px] text-[var(--accent-2)]">{block.data.body}</p> : null}
+          {block.data.body ? <p className="max-w-[780px] text-[var(--muted)]">{block.data.body}</p> : null}
         </div>
         {block.data.video ? <YouTubeEmbed video={block.data.video} /> : null}
         {block.data.maps.length ? (

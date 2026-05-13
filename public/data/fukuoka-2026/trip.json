@@ -6,7 +6,16 @@
     "id": "fukuoka-2026",
     "title": "福岡五天四夜旅行手冊｜博多・太宰府・柳川・海之中道・大濠公園",
     "language": "zh-Hant",
-    "printLabel": "列印 / 存成 PDF"
+    "printLabel": "列印 / 存成 PDF",
+    "dateRange": "2026/6/11（四）– 6/15（一）",
+    "departure": "臺灣桃園機場",
+    "recommendedBase": "天神 / 中洲川端 / 天神南",
+    "pace": "每日 2–3 個重點，保留雨天彈性",
+    "mustEat": [
+      "博多拉麵",
+      "水炊鍋",
+      "牛腸鍋"
+    ]
   },
   "content": {
     "entities": [
@@ -16,7 +25,7 @@
         "title": "博多站",
         "subtitle": "九州旅行的交通玄關；本次作為補給與機場銜接節點，而非唯一住宿答案。",
         "image": {
-          "src": "data/fukuoka/images/hakata-station.jpg",
+          "src": "data/fukuoka-2026/images/hakata-station.jpg",
           "alt": "博多站"
         },
         "tags": [
@@ -32,11 +41,11 @@
           "kicker": "Day 1 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/hakata-station.jpg",
+              "src": "data/fukuoka-2026/images/hakata-station.jpg",
               "alt": "博多站 圖片"
             },
             {
-              "src": "data/fukuoka/images/hakata-station.jpg",
+              "src": "data/fukuoka-2026/images/hakata-station.jpg",
               "alt": "博多站 圖片"
             }
           ],
@@ -70,7 +79,7 @@
         "title": "櫛田神社",
         "subtitle": "守護博多的「櫛田先生」，也是博多祇園山笠的精神中心。",
         "image": {
-          "src": "data/fukuoka/images/kushida-shrine.webp",
+          "src": "data/fukuoka-2026/images/kushida-shrine.webp",
           "alt": "櫛田神社"
         },
         "tags": [
@@ -87,11 +96,11 @@
           "kicker": "Day 1 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kushida-shrine.webp",
+              "src": "data/fukuoka-2026/images/kushida-shrine.webp",
               "alt": "櫛田神社 圖片"
             },
             {
-              "src": "data/fukuoka/images/kushida-shrine.webp",
+              "src": "data/fukuoka-2026/images/kushida-shrine.webp",
               "alt": "櫛田神社 圖片"
             }
           ],
@@ -125,7 +134,7 @@
         "title": "川端商店街",
         "subtitle": "從博多在地生活切入，比大型百貨更有街區感。",
         "image": {
-          "src": "data/fukuoka/images/kawabata-shopping-arcade.jpg",
+          "src": "data/fukuoka-2026/images/kawabata-shopping-arcade.jpg",
           "alt": "川端商店街"
         },
         "tags": [
@@ -141,11 +150,11 @@
           "kicker": "Day 1 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kawabata-shopping-arcade.jpg",
+              "src": "data/fukuoka-2026/images/kawabata-shopping-arcade.jpg",
               "alt": "川端商店街 圖片"
             },
             {
-              "src": "data/fukuoka/images/kushida-shrine.webp",
+              "src": "data/fukuoka-2026/images/kushida-shrine.webp",
               "alt": "川端商店街 圖片"
             }
           ],
@@ -178,7 +187,7 @@
         "title": "博多運河城",
         "subtitle": "大型複合商業設施，適合作為第一天的可選緩衝點。",
         "image": {
-          "src": "data/fukuoka/images/canal-city-hakata.jpg",
+          "src": "data/fukuoka-2026/images/canal-city-hakata.jpg",
           "alt": "博多運河城"
         },
         "tags": [
@@ -194,11 +203,11 @@
           "kicker": "Day 1 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/canal-city-hakata.jpg",
+              "src": "data/fukuoka-2026/images/canal-city-hakata.jpg",
               "alt": "博多運河城 圖片"
             },
             {
-              "src": "data/fukuoka/images/canal-city-hakata-2.jpg",
+              "src": "data/fukuoka-2026/images/canal-city-hakata-2.jpg",
               "alt": "博多運河城 圖片"
             }
           ],
@@ -231,7 +240,7 @@
         "title": "中洲屋台街",
         "subtitle": "福岡夜晚的飲食劇場，適合看城市如何在夜裡變形。",
         "image": {
-          "src": "data/fukuoka/images/nakasu-yatai.webp",
+          "src": "data/fukuoka-2026/images/nakasu-yatai.webp",
           "alt": "中洲屋台街"
         },
         "tags": [
@@ -247,11 +256,11 @@
           "kicker": "Day 1 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/nakasu-yatai.webp",
+              "src": "data/fukuoka-2026/images/nakasu-yatai.webp",
               "alt": "中洲屋台街 圖片"
             },
             {
-              "src": "data/fukuoka/images/nakasu-yatai.webp",
+              "src": "data/fukuoka-2026/images/nakasu-yatai.webp",
               "alt": "中洲屋台街 圖片"
             }
           ],
@@ -284,7 +293,7 @@
         "title": "太宰府天滿宮",
         "subtitle": "全國天滿宮信仰的重要中心，祭祀學問、文化與藝術之神菅原道真。",
         "image": {
-          "src": "data/fukuoka/images/dazaifu-tenmangu.webp",
+          "src": "data/fukuoka-2026/images/dazaifu-tenmangu.webp",
           "alt": "太宰府天滿宮"
         },
         "tags": [
@@ -300,11 +309,11 @@
           "kicker": "Day 2 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/dazaifu-tenmangu.webp",
+              "src": "data/fukuoka-2026/images/dazaifu-tenmangu.webp",
               "alt": "太宰府天滿宮 圖片"
             },
             {
-              "src": "data/fukuoka/images/dazaifu-tenmangu-plum.webp",
+              "src": "data/fukuoka-2026/images/dazaifu-tenmangu-plum.webp",
               "alt": "太宰府天滿宮 圖片"
             }
           ],
@@ -338,7 +347,7 @@
         "title": "太宰府參道",
         "subtitle": "從車站到神社的商業動線，梅枝餅與伴手禮構成參拜前奏。",
         "image": {
-          "src": "data/fukuoka/images/dazaifu-approach.jpg",
+          "src": "data/fukuoka-2026/images/dazaifu-approach.jpg",
           "alt": "太宰府參道"
         },
         "tags": [
@@ -354,11 +363,11 @@
           "kicker": "Day 2 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/dazaifu-approach.jpg",
+              "src": "data/fukuoka-2026/images/dazaifu-approach.jpg",
               "alt": "太宰府參道 圖片"
             },
             {
-              "src": "data/fukuoka/images/dazaifu-approach.jpg",
+              "src": "data/fukuoka-2026/images/dazaifu-approach.jpg",
               "alt": "太宰府參道 圖片"
             }
           ],
@@ -391,7 +400,7 @@
         "title": "九州國立博物館",
         "subtitle": "用亞洲交流史理解日本文化，而不是只看日本內部史。",
         "image": {
-          "src": "data/fukuoka/images/kyushu-national-museum.webp",
+          "src": "data/fukuoka-2026/images/kyushu-national-museum.webp",
           "alt": "九州國立博物館"
         },
         "tags": [
@@ -407,11 +416,11 @@
           "kicker": "Day 2 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kyushu-national-museum.webp",
+              "src": "data/fukuoka-2026/images/kyushu-national-museum.webp",
               "alt": "九州國立博物館 圖片"
             },
             {
-              "src": "data/fukuoka/images/kyushu-national-museum.webp",
+              "src": "data/fukuoka-2026/images/kyushu-national-museum.webp",
               "alt": "九州國立博物館 圖片"
             }
           ],
@@ -445,7 +454,7 @@
         "title": "小倉城",
         "subtitle": "北九州的城市象徵，適合看歷史如何被轉譯成現代展示。",
         "image": {
-          "src": "data/fukuoka/images/kokura-castle.webp",
+          "src": "data/fukuoka-2026/images/kokura-castle.webp",
           "alt": "小倉城"
         },
         "tags": [
@@ -462,11 +471,11 @@
           "kicker": "北九州備案 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kokura-castle.webp",
+              "src": "data/fukuoka-2026/images/kokura-castle.webp",
               "alt": "小倉城 圖片"
             },
             {
-              "src": "data/fukuoka/images/kokura-castle.webp",
+              "src": "data/fukuoka-2026/images/kokura-castle.webp",
               "alt": "小倉城 圖片"
             }
           ],
@@ -499,7 +508,7 @@
         "title": "門司港懷舊區",
         "subtitle": "明治以來的國際貿易港，被重新整理成可步行的港町歷史街區。",
         "image": {
-          "src": "data/fukuoka/images/mojiko-retro.webp",
+          "src": "data/fukuoka-2026/images/mojiko-retro.webp",
           "alt": "門司港懷舊區"
         },
         "tags": [
@@ -516,11 +525,11 @@
           "kicker": "北九州備案 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/mojiko-retro.webp",
+              "src": "data/fukuoka-2026/images/mojiko-retro.webp",
               "alt": "門司港懷舊區 圖片"
             },
             {
-              "src": "data/fukuoka/images/mojiko-port.webp",
+              "src": "data/fukuoka-2026/images/mojiko-port.webp",
               "alt": "門司港懷舊區 圖片"
             }
           ],
@@ -553,7 +562,7 @@
         "title": "關門海峽",
         "subtitle": "九州與本州之間的狹窄水道，讓門司港有真正的地理張力。",
         "image": {
-          "src": "data/fukuoka/images/kanmon-strait.webp",
+          "src": "data/fukuoka-2026/images/kanmon-strait.webp",
           "alt": "關門海峽"
         },
         "tags": [
@@ -570,11 +579,11 @@
           "kicker": "北九州備案 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kanmon-strait.webp",
+              "src": "data/fukuoka-2026/images/kanmon-strait.webp",
               "alt": "關門海峽 圖片"
             },
             {
-              "src": "data/fukuoka/images/kanmon-strait.webp",
+              "src": "data/fukuoka-2026/images/kanmon-strait.webp",
               "alt": "關門海峽 圖片"
             }
           ],
@@ -607,7 +616,7 @@
         "title": "Marine World 海之中道",
         "subtitle": "以九州海洋為主題的水族館，讓 Day 4 從城市切換到自然。",
         "image": {
-          "src": "data/fukuoka/images/marine-world.webp",
+          "src": "data/fukuoka-2026/images/marine-world.webp",
           "alt": "Marine World 海之中道"
         },
         "tags": [
@@ -623,11 +632,11 @@
           "kicker": "Day 4 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/marine-world.webp",
+              "src": "data/fukuoka-2026/images/marine-world.webp",
               "alt": "Marine World 海之中道 圖片"
             },
             {
-              "src": "data/fukuoka/images/marine-world.webp",
+              "src": "data/fukuoka-2026/images/marine-world.webp",
               "alt": "Marine World 海之中道 圖片"
             }
           ],
@@ -661,7 +670,7 @@
         "title": "海之中道海濱公園",
         "subtitle": "巨大海濱國營公園，有花、草地、動物之森與海邊空氣。",
         "image": {
-          "src": "data/fukuoka/images/uminonakamichi-seaside-park.jpg",
+          "src": "data/fukuoka-2026/images/uminonakamichi-seaside-park.jpg",
           "alt": "海之中道海濱公園"
         },
         "tags": [
@@ -677,11 +686,11 @@
           "kicker": "Day 4 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/uminonakamichi-seaside-park.jpg",
+              "src": "data/fukuoka-2026/images/uminonakamichi-seaside-park.jpg",
               "alt": "海之中道海濱公園 圖片"
             },
             {
-              "src": "data/fukuoka/images/uminonakamichi-seaside-park.jpg",
+              "src": "data/fukuoka-2026/images/uminonakamichi-seaside-park.jpg",
               "alt": "海之中道海濱公園 圖片"
             }
           ],
@@ -714,7 +723,7 @@
         "title": "大濠公園",
         "subtitle": "福岡市中心的都市綠洲，用安靜方式結束旅程。",
         "image": {
-          "src": "data/fukuoka/images/ohori-park.webp",
+          "src": "data/fukuoka-2026/images/ohori-park.webp",
           "alt": "大濠公園"
         },
         "tags": [
@@ -730,11 +739,11 @@
           "kicker": "Day 5 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/ohori-park.webp",
+              "src": "data/fukuoka-2026/images/ohori-park.webp",
               "alt": "大濠公園 圖片"
             },
             {
-              "src": "data/fukuoka/images/ohori-park.webp",
+              "src": "data/fukuoka-2026/images/ohori-park.webp",
               "alt": "大濠公園 圖片"
             }
           ],
@@ -768,7 +777,7 @@
         "title": "福岡城跡",
         "subtitle": "黑田家的城跡，讓大濠公園旁的城市空間多了歷史深度。",
         "image": {
-          "src": "data/fukuoka/images/fukuoka-castle-ruins.webp",
+          "src": "data/fukuoka-2026/images/fukuoka-castle-ruins.webp",
           "alt": "福岡城跡"
         },
         "tags": [
@@ -784,11 +793,11 @@
           "kicker": "Day 5 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/fukuoka-castle-ruins.webp",
+              "src": "data/fukuoka-2026/images/fukuoka-castle-ruins.webp",
               "alt": "福岡城跡 圖片"
             },
             {
-              "src": "data/fukuoka/images/fukuoka-castle-ruins.webp",
+              "src": "data/fukuoka-2026/images/fukuoka-castle-ruins.webp",
               "alt": "福岡城跡 圖片"
             }
           ],
@@ -821,7 +830,7 @@
         "type": "restaurant",
         "title": "博多拉麵",
         "image": {
-          "src": "data/fukuoka/images/food-hakata-ramen.jpg",
+          "src": "data/fukuoka-2026/images/food-hakata-ramen.jpg",
           "alt": "博多拉麵"
         },
         "tags": [
@@ -844,7 +853,7 @@
           ],
           "gallery": [
             {
-              "src": "data/fukuoka/images/food-hakata-ramen.jpg",
+              "src": "data/fukuoka-2026/images/food-hakata-ramen.jpg",
               "alt": "博多拉麵"
             }
           ],
@@ -873,7 +882,7 @@
         "type": "restaurant",
         "title": "水炊鍋",
         "image": {
-          "src": "data/fukuoka/images/food-mizutaki.jpg",
+          "src": "data/fukuoka-2026/images/food-mizutaki.jpg",
           "alt": "水炊鍋"
         },
         "tags": [
@@ -893,7 +902,7 @@
           ],
           "gallery": [
             {
-              "src": "data/fukuoka/images/food-mizutaki.jpg",
+              "src": "data/fukuoka-2026/images/food-mizutaki.jpg",
               "alt": "水炊鍋"
             }
           ]
@@ -909,7 +918,7 @@
         "type": "restaurant",
         "title": "牛腸鍋",
         "image": {
-          "src": "data/fukuoka/images/food-motsunabe.jpg",
+          "src": "data/fukuoka-2026/images/food-motsunabe.jpg",
           "alt": "牛腸鍋"
         },
         "tags": [
@@ -929,7 +938,7 @@
           ],
           "gallery": [
             {
-              "src": "data/fukuoka/images/food-motsunabe.jpg",
+              "src": "data/fukuoka-2026/images/food-motsunabe.jpg",
               "alt": "牛腸鍋"
             }
           ],
@@ -954,7 +963,7 @@
         "title": "觀世音寺",
         "subtitle": "古代太宰府的代表性寺院，讓太宰府不只是一座天滿宮。",
         "image": {
-          "src": "data/fukuoka/images/kanzeonji-kondo.jpg",
+          "src": "data/fukuoka-2026/images/kanzeonji-kondo.jpg",
           "alt": "觀世音寺金堂"
         },
         "tags": [
@@ -970,11 +979,11 @@
           "kicker": "Day 2 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kanzeonji-kondo.jpg",
+              "src": "data/fukuoka-2026/images/kanzeonji-kondo.jpg",
               "alt": "觀世音寺金堂"
             },
             {
-              "src": "data/fukuoka/images/kanzeonji-sando.jpg",
+              "src": "data/fukuoka-2026/images/kanzeonji-sando.jpg",
               "alt": "觀世音寺參道"
             }
           ],
@@ -1009,7 +1018,7 @@
         "title": "戒壇院",
         "subtitle": "古代授戒制度的痕跡，適合和觀世音寺一起短訪。",
         "image": {
-          "src": "data/fukuoka/images/kaidanin-temple.jpg",
+          "src": "data/fukuoka-2026/images/kaidanin-temple.jpg",
           "alt": "戒壇院"
         },
         "tags": [
@@ -1025,11 +1034,11 @@
           "kicker": "Day 2 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/kaidanin-temple.jpg",
+              "src": "data/fukuoka-2026/images/kaidanin-temple.jpg",
               "alt": "戒壇院"
             },
             {
-              "src": "data/fukuoka/images/kanzeonji-sando.jpg",
+              "src": "data/fukuoka-2026/images/kanzeonji-sando.jpg",
               "alt": "觀世音寺周邊步道"
             }
           ],
@@ -1063,7 +1072,7 @@
         "title": "柳川水鄉",
         "subtitle": "以水路、城下町與慢速船行構成的福岡近郊旅行。",
         "image": {
-          "src": "data/fukuoka/images/yanagawa-canal-boat.jpg",
+          "src": "data/fukuoka-2026/images/yanagawa-canal-boat.jpg",
           "alt": "柳川川下遊船"
         },
         "tags": [
@@ -1079,19 +1088,19 @@
           "kicker": "Day 3 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/yanagawa-canal-boat.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-canal-boat.jpg",
               "alt": "柳川川下遊船"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-moat-willow.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-moat-willow.jpg",
               "alt": "柳川水路與柳樹"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-canal.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-canal.jpg",
               "alt": "柳川水路"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-ohana.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-ohana.jpg",
               "alt": "柳川御花"
             }
           ],
@@ -1126,7 +1135,7 @@
         "title": "柳川川下遊船",
         "subtitle": "用船速理解水鄉，而不是用步速趕景點。",
         "image": {
-          "src": "data/fukuoka/images/yanagawa-canal-boat.jpg",
+          "src": "data/fukuoka-2026/images/yanagawa-canal-boat.jpg",
           "alt": "柳川川下遊船"
         },
         "tags": [
@@ -1142,15 +1151,15 @@
           "kicker": "Day 3 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/yanagawa-canal-boat.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-canal-boat.jpg",
               "alt": "柳川川下遊船"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-canal.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-canal.jpg",
               "alt": "柳川水路"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-moat-willow.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-moat-willow.jpg",
               "alt": "柳川水路與柳樹"
             }
           ],
@@ -1185,7 +1194,7 @@
         "title": "柳川藩主立花邸 御花",
         "subtitle": "從水鄉走進柳川的藩主文化與近代接待空間。",
         "image": {
-          "src": "data/fukuoka/images/yanagawa-ohana.jpg",
+          "src": "data/fukuoka-2026/images/yanagawa-ohana.jpg",
           "alt": "柳川御花"
         },
         "tags": [
@@ -1201,11 +1210,11 @@
           "kicker": "Day 3 · 深度景點介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/yanagawa-ohana.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-ohana.jpg",
               "alt": "柳川御花"
             },
             {
-              "src": "data/fukuoka/images/yanagawa-moat-willow.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-moat-willow.jpg",
               "alt": "柳川水路"
             }
           ],
@@ -1239,7 +1248,7 @@
         "title": "柳川鰻魚",
         "subtitle": "水鄉午餐候選，不排隊、不綁死名店。",
         "image": {
-          "src": "data/fukuoka/images/yanagawa-unagi.jpg",
+          "src": "data/fukuoka-2026/images/yanagawa-unagi.jpg",
           "alt": "柳川鰻魚飯"
         },
         "tags": [
@@ -1255,7 +1264,7 @@
           "kicker": "Day 3 · 美食介紹",
           "gallery": [
             {
-              "src": "data/fukuoka/images/yanagawa-unagi.jpg",
+              "src": "data/fukuoka-2026/images/yanagawa-unagi.jpg",
               "alt": "柳川鰻魚飯"
             }
           ],
@@ -1288,7 +1297,7 @@
         "title": "博多／天神抵達日午餐",
         "subtitle": "落地後先吃得簡單，讓身體和行李都安定下來。",
         "image": {
-          "src": "data/fukuoka/images/hakata-station.jpg",
+          "src": "data/fukuoka-2026/images/hakata-station.jpg",
           "alt": "博多站周邊午餐"
         },
         "tags": [
@@ -1305,7 +1314,7 @@
           "kicker": "Day 1 · 午餐參考",
           "gallery": [
             {
-              "src": "data/fukuoka/images/hakata-station.jpg",
+              "src": "data/fukuoka-2026/images/hakata-station.jpg",
               "alt": "博多站周邊午餐"
             }
           ],
@@ -1340,7 +1349,7 @@
         "title": "太宰府參道午餐",
         "subtitle": "參拜後簡單吃，保留午後古寺與九博時間。",
         "image": {
-          "src": "data/fukuoka/images/dazaifu-approach.jpg",
+          "src": "data/fukuoka-2026/images/dazaifu-approach.jpg",
           "alt": "太宰府參道午餐"
         },
         "tags": [
@@ -1357,11 +1366,11 @@
           "kicker": "Day 2 · 午餐參考",
           "gallery": [
             {
-              "src": "data/fukuoka/images/dazaifu-approach.jpg",
+              "src": "data/fukuoka-2026/images/dazaifu-approach.jpg",
               "alt": "太宰府參道"
             },
             {
-              "src": "data/fukuoka/images/dazaifu-tenmangu-plum.webp",
+              "src": "data/fukuoka-2026/images/dazaifu-tenmangu-plum.webp",
               "alt": "太宰府天滿宮"
             }
           ],
@@ -1396,7 +1405,7 @@
         "title": "Marine World 午餐",
         "subtitle": "水族館日以館內或周邊簡餐為主，不把美食當主線。",
         "image": {
-          "src": "data/fukuoka/images/marine-world.webp",
+          "src": "data/fukuoka-2026/images/marine-world.webp",
           "alt": "Marine World 午餐"
         },
         "tags": [
@@ -1413,11 +1422,11 @@
           "kicker": "Day 4 · 午餐參考",
           "gallery": [
             {
-              "src": "data/fukuoka/images/marine-world.webp",
+              "src": "data/fukuoka-2026/images/marine-world.webp",
               "alt": "Marine World 海之中道"
             },
             {
-              "src": "data/fukuoka/images/uminonakamichi-seaside-park.jpg",
+              "src": "data/fukuoka-2026/images/uminonakamichi-seaside-park.jpg",
               "alt": "海之中道海濱公園"
             }
           ],
@@ -1452,7 +1461,7 @@
         "title": "大濠／赤坂午餐",
         "subtitle": "回程日的市區午餐，簡單、近、方便取行李。",
         "image": {
-          "src": "data/fukuoka/images/ohori-park.webp",
+          "src": "data/fukuoka-2026/images/ohori-park.webp",
           "alt": "大濠公園午餐"
         },
         "tags": [
@@ -1470,11 +1479,11 @@
           "kicker": "Day 5 · 午餐參考",
           "gallery": [
             {
-              "src": "data/fukuoka/images/ohori-park.webp",
+              "src": "data/fukuoka-2026/images/ohori-park.webp",
               "alt": "大濠公園"
             },
             {
-              "src": "data/fukuoka/images/fukuoka-castle-ruins.webp",
+              "src": "data/fukuoka-2026/images/fukuoka-castle-ruins.webp",
               "alt": "福岡城跡"
             }
           ],
@@ -1509,7 +1518,7 @@
         "title": "桃園國際機場",
         "subtitle": "旅程起點：早班機出發前先處理報到、安檢與簡單早餐。",
         "image": {
-          "src": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+          "src": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg",
           "alt": "桃園出發前往福岡"
         },
         "tags": [
@@ -1525,7 +1534,7 @@
           "kicker": "Day 1 · 交通節點",
           "gallery": [
             {
-              "src": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+              "src": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg",
               "alt": "桃園出發前往福岡"
             }
           ],
@@ -1559,7 +1568,7 @@
         "title": "福岡機場抵達",
         "subtitle": "抵達後先進市區；國際線搭地鐵需留意航廈接駁。",
         "image": {
-          "src": "data/fukuoka/images/hakata-station.jpg",
+          "src": "data/fukuoka-2026/images/hakata-station.jpg",
           "alt": "福岡機場進市區"
         },
         "tags": [
@@ -1576,7 +1585,7 @@
           "kicker": "Day 1 · 交通節點",
           "gallery": [
             {
-              "src": "data/fukuoka/images/hakata-station.jpg",
+              "src": "data/fukuoka-2026/images/hakata-station.jpg",
               "alt": "福岡機場進市區"
             }
           ],
@@ -1656,7 +1665,7 @@
         "title": "福岡機場出境",
         "subtitle": "回程日提早到機場，把報到、安檢、出境與晚餐彈性留足。",
         "image": {
-          "src": "data/fukuoka/images/hakata-station.jpg",
+          "src": "data/fukuoka-2026/images/hakata-station.jpg",
           "alt": "福岡機場回程"
         },
         "tags": [
@@ -1673,7 +1682,7 @@
           "kicker": "Day 5 · 交通節點",
           "gallery": [
             {
-              "src": "data/fukuoka/images/hakata-station.jpg",
+              "src": "data/fukuoka-2026/images/hakata-station.jpg",
               "alt": "福岡機場回程"
             }
           ],
@@ -1717,14 +1726,7 @@
               "深度旅行手冊"
             ],
             "lead": "五天裡，從博多的地方信仰出發，走進太宰府的古代九州脈絡、柳川的水鄉與藩主文化、海之中道的海洋展示，最後用大濠公園與福岡城跡收束城市記憶。",
-            "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
-            "meta": [
-              "日期：2026/6/11（四）– 6/15（一）",
-              "出發：臺灣桃園機場",
-              "建議住宿：天神 / 中洲川端 / 天神南",
-              "節奏：每日 2–3 個重點，保留雨天彈性",
-              "必吃：博多拉麵・水炊鍋・牛腸鍋"
-            ]
+            "image": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg"
           }
         }
       ]
@@ -1744,19 +1746,18 @@
             "mapLabel": "福岡與周邊交通位置示意圖",
             "maps": [
               {
-                "src": "data/fukuoka/images/bg-around-japan.svg",
+                "src": "data/fukuoka-2026/images/bg-around-japan.svg",
                 "alt": "福岡與東亞周邊位置示意圖"
               },
               {
-                "src": "data/fukuoka/images/bg-inside-japan.svg",
+                "src": "data/fukuoka-2026/images/bg-inside-japan.svg",
                 "alt": "福岡與日本國內主要城市位置示意圖"
               }
             ],
             "video": {
               "provider": "youtube",
               "url": "https://www.youtube.com/watch?v=_VZv_Z9Aey4",
-              "title": "福岡城市介紹影片",
-              "caption": "用來建立福岡市區與周邊區域的第一印象；實際開放與交通以官方資料為準。"
+              "title": "福岡城市介紹影片"
             }
           }
         },
@@ -2054,7 +2055,7 @@
               "type": "dayMedia",
               "data": {
                 "image": {
-                  "src": "data/fukuoka/images/nakasu-yatai.webp",
+                  "src": "data/fukuoka-2026/images/nakasu-yatai.webp",
                   "alt": "中洲屋台街"
                 },
                 "mapEmbed": "https://www.google.com/maps?q=%E5%8D%9A%E5%A4%9A%E9%A7%85%20%E6%AB%9B%E7%94%B0%E7%A5%9E%E7%A4%BE%20%E5%B7%9D%E7%AB%AF%E5%95%86%E5%BA%97%E8%A1%97%20%E5%8D%9A%E5%A4%9A%E9%81%8B%E6%B2%B3%E5%9F%8E%20%E4%B8%AD%E6%B4%B2&output=embed",
@@ -2263,7 +2264,7 @@
               "type": "dayMedia",
               "data": {
                 "image": {
-                  "src": "data/fukuoka/images/dazaifu-tenmangu.webp",
+                  "src": "data/fukuoka-2026/images/dazaifu-tenmangu.webp",
                   "alt": "太宰府天滿宮"
                 },
                 "mapEmbed": "https://www.google.com/maps?q=%E5%A4%AA%E5%AE%B0%E5%BA%9C%E5%A4%A9%E6%BB%BF%E5%AE%AE%20%E8%A6%B3%E4%B8%96%E9%9F%B3%E5%AF%BA%20%E6%88%92%E5%A3%87%E9%99%A2%20%E4%B9%9D%E5%B7%9E%E5%9B%BD%E7%AB%8B%E5%8D%9A%E7%89%A9%E9%A4%A8&output=embed",
@@ -2447,7 +2448,7 @@
               "type": "dayMedia",
               "data": {
                 "image": {
-                  "src": "data/fukuoka/images/yanagawa-canal-boat.jpg",
+                  "src": "data/fukuoka-2026/images/yanagawa-canal-boat.jpg",
                   "alt": "柳川川下遊船"
                 },
                 "mapEmbed": "https://www.google.com/maps?q=%E8%A5%BF%E9%89%84%E6%9F%B3%E5%B7%9D%E9%A7%85%20%E6%9F%B3%E5%B7%9D%E5%B7%9D%E4%B8%8B%E3%82%8A%20%E5%BE%A1%E8%8A%B1%20%E5%A4%A9%E7%A5%9E&output=embed",
@@ -2615,7 +2616,7 @@
               "type": "dayMedia",
               "data": {
                 "image": {
-                  "src": "data/fukuoka/images/marine-world.webp",
+                  "src": "data/fukuoka-2026/images/marine-world.webp",
                   "alt": "海洋世界海之中道"
                 },
                 "mapEmbed": "https://www.google.com/maps?q=Marine%20World%20Uminonakamichi%20%E6%B5%B7%E4%B9%8B%E4%B8%AD%E9%81%93%E6%B5%B7%E6%BF%B1%E5%85%AC%E5%9C%92&output=embed",
@@ -2774,7 +2775,7 @@
               "type": "dayMedia",
               "data": {
                 "image": {
-                  "src": "data/fukuoka/images/ohori-park.webp",
+                  "src": "data/fukuoka-2026/images/ohori-park.webp",
                   "alt": "大濠公園"
                 },
                 "mapEmbed": "https://www.google.com/maps?q=%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92%20%E7%A6%8F%E5%B2%A1%E5%9F%8E%E8%B7%A1%20%E5%8D%9A%E5%A4%9A%E9%A7%85&output=embed",

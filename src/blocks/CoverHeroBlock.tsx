@@ -2,8 +2,22 @@ import type { BlockProps } from "./types";
 
 type CoverHeroBlock = Extract<BlockProps["block"], { type: "coverHero" }>;
 
-export function CoverHeroBlock({ block }: BlockProps<CoverHeroBlock>) {
+function getTripMetaItems({ block, tripMeta }: BlockProps<CoverHeroBlock>) {
+  const items = [
+    tripMeta?.dateRange ? `日期：${tripMeta.dateRange}` : "",
+    tripMeta?.departure ? `出發：${tripMeta.departure}` : "",
+    tripMeta?.recommendedBase ? `建議住宿：${tripMeta.recommendedBase}` : "",
+    tripMeta?.pace ? `節奏：${tripMeta.pace}` : "",
+    tripMeta?.mustEat.length ? `必吃：${tripMeta.mustEat.join("・")}` : ""
+  ].filter(Boolean);
+
+  return items.length ? items : block.data.meta;
+}
+
+export function CoverHeroBlock(props: BlockProps<CoverHeroBlock>) {
+  const { block } = props;
   const title = Array.isArray(block.data.title) ? block.data.title : [block.data.title];
+  const metaItems = getTripMetaItems(props);
 
   return (
     <section
@@ -32,9 +46,9 @@ export function CoverHeroBlock({ block }: BlockProps<CoverHeroBlock>) {
           ))}
         </h1>
         {block.data.lead ? <p className="max-w-[760px] text-[clamp(17px,2vw,23px)] text-white/90">{block.data.lead}</p> : null}
-        {block.data.meta.length ? (
+        {metaItems.length ? (
           <div className="mt-7 flex flex-wrap gap-3">
-            {block.data.meta.map((item) => (
+            {metaItems.map((item) => (
               <span className="rounded-full border border-white/20 bg-white/15 px-3 py-2 text-sm" key={item}>
                 {item}
               </span>
