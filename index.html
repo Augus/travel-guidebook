@@ -1,0 +1,1374 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>福岡五天四夜旅行手冊｜博多・太宰府・小倉・門司港・海之中道</title>
+  <style>
+    :root{
+      --bg:#f6f2ea;
+      --paper:#fffdf8;
+      --ink:#1f2523;
+      --muted:#6a6f68;
+      --line:#dfd6c7;
+      --accent:#8f5f3f;
+      --accent2:#2f5e59;
+      --soft:#efe6d8;
+      --card:#fffaf1;
+      --map-gold:#8f5f3f;
+      --shadow: 0 18px 50px rgba(55,43,26,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#f4efe5 0%,#faf7ef 45%,#f1eadf 100%);
+      color:var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height:1.75;
+      letter-spacing:.01em;
+    }
+    a{color:var(--accent2); text-decoration:none; border-bottom:1px solid rgba(47,94,89,.28)}
+    a:hover{border-bottom-color:var(--accent2)}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px}
+    .hero{
+      min-height:78vh;
+      border-radius:34px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(90deg,rgba(18,22,20,.78),rgba(18,22,20,.35),rgba(18,22,20,.08)),
+        url("images/hero-fukuoka-cover.jpg") center/cover;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:end;
+      padding:56px;
+      color:#fff;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:radial-gradient(circle at 20% 85%,rgba(255,255,255,.18),transparent 32%);
+      pointer-events:none;
+    }
+    .hero-content{position:relative;max-width:820px;z-index:1}
+    .eyebrow{
+      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:999px; padding:8px 14px; font-size:13px;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,.08);
+    }
+    h1{font-size:clamp(38px,6vw,82px);line-height:1.02;margin:18px 0 18px;letter-spacing:-.04em}
+    .lead{font-size:clamp(17px,2vw,23px);max-width:760px;color:rgba(255,255,255,.9)}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .pill{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:8px 13px;border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.2);
+      font-size:14px;
+    }
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(246,242,234,.86); backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(116,91,60,.12);
+    }
+    .nav .wrap{padding-top:10px;padding-bottom:10px;display:flex;gap:10px;overflow:auto}
+    .nav a{
+      flex:0 0 auto; padding:8px 12px; border-radius:999px;
+      background:rgba(255,253,248,.78); border:1px solid rgba(116,91,60,.14);
+      color:var(--ink); font-size:14px;
+    }
+    section{margin:44px 0}
+    .welcome-fukuoka{
+      background:rgba(255,253,248,.86);
+      border:1px solid rgba(116,91,60,.16);
+      border-radius:34px;
+      padding:42px;
+      overflow:hidden;
+      box-shadow:0 14px 45px rgba(70,50,25,.08);
+    }
+    .welcome-layout{
+      display:grid;grid-template-columns:1fr;gap:28px;align-items:start;
+    }
+    .welcome-copy{max-width:860px}
+    .welcome-copy h2{
+      color:var(--accent2);font-size:clamp(36px,5vw,64px);line-height:1.05;
+      letter-spacing:0;margin:0 0 22px;
+    }
+    .welcome-rule{height:2px;background:var(--accent2);width:min(100%,620px);margin:0 0 28px}
+    .welcome-copy p{font-size:17px;color:var(--accent2);margin:0;max-width:780px}
+    .map-visual{
+      min-height:0;border-radius:28px;background:#f7f2df;
+      border:1px solid rgba(116,91,60,.14);position:relative;overflow:hidden;
+    }
+    .map-visual img{width:100%;height:auto;object-fit:contain;display:block;padding:0}
+    .map-visual.official-map-set{
+      display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center;
+      padding:22px;background:#f7f2df;
+    }
+    .official-map-panel{min-width:0}
+    .map-visual.official-map-set img{
+      height:auto;min-height:0;padding:0;
+    }
+    .official-map-panel:first-child img{transform:scale(1.08);transform-origin:center}
+    .official-map-panel:last-child img{transform:scale(1.16);transform-origin:center}
+    .map-visual.local-map svg{display:none}
+    .map-visual svg{width:100%;height:100%;min-height:430px;display:block}
+    .map-sea{fill:#f5f4e4}
+    .map-land{fill:#2f5e59;stroke:#f5f4e4;stroke-width:2}
+    .map-land-soft{fill:#2f5e59;opacity:.9}
+    .map-label{
+      font-weight:800;font-size:21px;fill:#8f5f3f;paint-order:stroke;
+      stroke:#f5f4e4;stroke-width:5px;stroke-linejoin:round;
+    }
+    .map-label.small{font-size:17px}
+    .map-tag{fill:#8f5f3f}
+    .map-tag-text{fill:#fff;font-size:18px;font-weight:800}
+    .map-pin{fill:#8f5f3f;stroke:#fff;stroke-width:3}
+    .map-pin-dot{fill:#fff}
+    .map-focus{fill:#8f5f3f}
+    .map-line{stroke:#2f5e59;stroke-width:2;fill:none;opacity:.7}
+    .section-head{
+      display:grid; grid-template-columns:1fr auto; gap:18px; align-items:end;
+      margin-bottom:20px;
+    }
+    h2{font-size:clamp(27px,3vw,46px);line-height:1.14;margin:0;letter-spacing:-.035em}
+    h3{font-size:24px;margin:8px 0 10px;line-height:1.25}
+    h4{font-size:18px;margin:18px 0 6px}
+    .kicker{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px}
+    .note{
+      color:var(--muted); font-size:15px; max-width:760px;
+    }
+    .grid{display:grid;gap:18px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .card{
+      background:rgba(255,253,248,.86);
+      border:1px solid rgba(116,91,60,.14);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:0 10px 35px rgba(70,50,25,.07);
+    }
+    .compact{padding:18px}
+    .summary-card{min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+    .day-num{
+      font-size:13px;color:#fff;background:var(--accent2);border-radius:999px;
+      display:inline-flex;width:max-content;padding:6px 11px;font-weight:700;
+    }
+    .big-num{font-size:48px;line-height:1;color:var(--accent);font-weight:800;letter-spacing:-.05em}
+    .hero-img,.photo{
+      width:100%; border-radius:22px; object-fit:cover; aspect-ratio:16/9;
+      border:1px solid rgba(116,91,60,.14);
+      background:#eee;
+    }
+    .caption{font-size:12px;color:var(--muted);margin-top:6px}
+    .route{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+      padding:16px; border-radius:20px; background:#efe6d8;
+      border:1px solid rgba(116,91,60,.18);
+      margin-top:18px;
+    }
+    .route span{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:8px 11px;border-radius:999px;background:#fffdf8;
+      border:1px solid rgba(116,91,60,.16); font-size:14px;
+    }
+    .route b{color:var(--accent);font-size:18px}
+    .table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;border:1px solid var(--line)}
+    .table-wrap{overflow:auto;border-radius:18px}
+    .table-wrap .table{min-width:760px}
+    .table th,.table td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+    .table tr:last-child td{border-bottom:0}
+    .table th{background:#efe6d8;text-align:left;font-size:13px;color:#4f4336;white-space:nowrap}
+    .table th:first-child,.table td:first-child{width:74px;white-space:nowrap}
+    .callout{
+      border-left:5px solid var(--accent2);
+      background:#eef4ef;
+      padding:16px 18px;
+      border-radius:16px;
+      color:#243530;
+      margin:14px 0;
+    }
+    .day{
+      background:linear-gradient(180deg,rgba(255,253,248,.96),rgba(255,250,242,.86));
+      border:1px solid rgba(116,91,60,.14);
+      border-radius:34px;
+      padding:34px 28px 30px;
+      box-shadow:var(--shadow);
+    }
+    .day-head{
+      display:grid; grid-template-columns:1fr; gap:26px; align-items:start;
+      margin-bottom:28px;
+    }
+    .day-head > div:first-child{display:grid;gap:10px}
+    .day-head h2{margin:0}
+    .day-head .day-num{margin-bottom:2px}
+    .day-media-row{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch;
+    }
+    .day-media-row > div:first-child{display:grid;grid-template-rows:420px auto}
+    .day-media-row .hero-img{height:100%;min-height:0;aspect-ratio:auto}
+    .day-media-row .mapbox{height:420px;min-height:420px}
+    .day-media-row .mapbox iframe{min-height:420px}
+    .tagline{font-size:18px;color:var(--muted);margin:0}
+    .mapbox{
+      border-radius:24px;overflow:hidden;border:1px solid rgba(116,91,60,.14);
+      background:#f1eadf;min-height:300px;display:flex;
+    }
+    iframe{width:100%;height:300px;border:0;display:block;filter:saturate(.92) contrast(.96)}
+    .mapbox iframe{height:auto;min-height:300px;flex:1}
+    .detail-list{display:grid;gap:14px;margin-top:18px}
+    .spot{
+      display:grid; grid-template-columns:180px 1fr; gap:18px;
+      padding:16px;border-radius:22px;background:rgba(255,253,248,.76);
+      border:1px solid rgba(116,91,60,.12);
+    }
+    .spot img{width:100%;height:140px;object-fit:cover;border-radius:16px}
+    .spot-title button{
+      appearance:none;border:0;background:transparent;color:inherit;
+      padding:0;font:inherit;font-weight:800;text-align:left;cursor:pointer;
+    }
+    .spot-title button:hover{color:var(--accent)}
+    .spot-title button:focus-visible{
+      outline:2px solid var(--accent2);outline-offset:4px;border-radius:6px;
+    }
+    .meta-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .mini{
+      font-size:12px;background:#efe6d8;border:1px solid rgba(116,91,60,.14);
+      border-radius:999px;padding:4px 8px;color:#6a6f68;
+    }
+    details{
+      background:rgba(255,253,248,.76);
+      border:1px solid rgba(116,91,60,.14);
+      border-radius:18px;
+      padding:14px 16px;
+    }
+    summary{cursor:pointer;font-weight:700}
+    .food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .food-card{padding:0;overflow:hidden}
+    .food-card img{width:100%;height:190px;object-fit:cover;display:block;background:#eee}
+    .food-card-body{padding:22px}
+    .food-card-body p{margin:0 0 12px}
+    .food-note{
+      margin-top:14px;padding-top:12px;border-top:1px solid rgba(116,91,60,.14);
+      display:grid;gap:8px;font-size:14px;color:#4b4f49;
+    }
+    .food-note b{color:var(--ink)}
+    .source-list li{margin-bottom:8px}
+    .day > .grid-2{grid-template-columns:1fr}
+    .day .mapbox{min-height:420px}
+    .day > details{margin-top:20px}
+
+    .modal-overlay{
+      position:fixed;inset:0;z-index:100;background:rgba(24,22,18,.58);
+      display:none;align-items:center;justify-content:center;padding:20px;
+      backdrop-filter:blur(8px);
+    }
+    .modal-overlay.is-open{display:flex}
+    .modal{
+      width:min(980px,100%);max-height:88vh;overflow:auto;
+      background:var(--paper);border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.35);
+      border:1px solid rgba(116,91,60,.14);
+      position:relative;
+    }
+    .modal-close{
+      position:sticky;top:14px;margin-left:auto;margin-right:14px;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      width:42px;height:42px;border-radius:999px;border:1px solid rgba(116,91,60,.18);
+      background:rgba(255,253,248,.92);font-size:22px;cursor:pointer;
+      box-shadow:0 8px 24px rgba(70,50,25,.12);
+    }
+    .modal-hero{height:340px;background:#ddd;border-radius:28px 28px 0 0;overflow:hidden;margin-top:-42px}
+    .modal-hero img{width:100%;height:100%;object-fit:cover}
+    .modal-body{padding:28px 34px 36px}
+    .modal-kicker{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .modal-title{font-size:clamp(30px,4vw,52px);line-height:1.08;margin:8px 0 10px;letter-spacing:-.035em}
+    .modal-subtitle{font-size:18px;color:var(--muted);margin:0 0 18px}
+    .modal-meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+    .modal-meta span{font-size:13px;background:#efe6d8;border:1px solid rgba(116,91,60,.14);border-radius:999px;padding:6px 10px;color:#6a6f68}
+    .modal-layout{display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start}
+    .modal-article p{margin:0 0 16px}
+    .modal-side{
+      position:sticky;top:72px;background:#efe6d8;border:1px solid rgba(116,91,60,.14);
+      border-radius:22px;padding:18px;font-size:14px;
+    }
+    .modal-side h4{margin-top:0}
+    .modal-side ul{padding-left:18px;margin:8px 0 0}
+    .modal-side li{margin-bottom:8px}
+    .gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+    .gallery img{width:100%;height:170px;object-fit:cover;border-radius:16px;border:1px solid rgba(116,91,60,.12)}
+    @media (max-width:900px){
+      .modal-layout{grid-template-columns:1fr}
+      .modal-side{position:static}
+      .modal-body{padding:22px}
+      .modal-hero{height:230px}
+      .gallery{grid-template-columns:1fr}
+    }
+
+    .footer{padding:36px 0 80px;color:var(--muted);font-size:14px}
+    .print-btn{
+      position:fixed;right:18px;bottom:18px;z-index:30;
+      background:#1f2523;color:white;border:0;border-radius:999px;
+      padding:12px 16px;font-weight:700;box-shadow:0 12px 30px rgba(0,0,0,.18);cursor:pointer;
+    }
+    @media (max-width:900px){
+      .welcome-fukuoka{padding:26px}
+      .welcome-layout{grid-template-columns:1fr}
+      .map-visual,.map-visual svg{min-height:0}
+      .map-visual img{min-height:0;padding:0}
+      .map-visual.official-map-set{grid-template-columns:1fr}
+      .map-visual.official-map-set img{min-height:0;padding:0}
+      .official-map-panel:first-child img,.official-map-panel:last-child img{transform:none}
+      .day{padding:28px 20px 24px}
+      .day-head{gap:22px;margin-bottom:24px}
+      .route{margin-top:14px}
+      .wrap{padding:18px}
+      .hero{padding:34px 24px;min-height:70vh;border-radius:26px}
+      .grid-2,.grid-3,.grid-5,.day-head,.day-media-row,.food-grid{grid-template-columns:1fr}
+      .day-media-row > div:first-child{grid-template-rows:300px auto}
+      .day-media-row .mapbox{height:auto;min-height:300px}
+      .day-media-row .mapbox iframe{min-height:300px}
+      .spot{grid-template-columns:1fr}
+      .spot img{height:210px}
+      .section-head{grid-template-columns:1fr}
+    }
+    @media print{
+      .nav,.print-btn{display:none}
+      body{background:white}
+      .hero,.day,.card{box-shadow:none}
+      a{border:0;color:inherit}
+      iframe{display:none}
+      .day{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">列印 / 存成 PDF</button>
+
+<header class="wrap">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">FUKUOKA 5 DAYS GUIDE · 博多作為基地</div>
+      <h1>福岡五天四夜<br>城市導覽手冊</h1>
+      <p class="lead">
+        歡迎來到福岡。接下來的五天，我們會以博多為基地，慢慢走進城市生活、九州文化、港口歷史、海邊自然與在地餐桌。
+      </p>
+      <div class="hero-meta">
+        <span class="pill">出發：臺灣桃園機場</span>
+        <span class="pill">基地：博多站周邊</span>
+        <span class="pill">節奏：每日 2–3 個重點</span>
+        <span class="pill">必吃：拉麵・水炊鍋・牛腸鍋</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#welcome">福岡定位</a>
+    <a href="#prep">行前準備</a>
+    <a href="#overview">旅程概覽</a>
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#day3">Day 3</a>
+    <a href="#day4">Day 4</a>
+    <a href="#day5">Day 5</a>
+    <a href="#food">美食安排</a>
+    <a href="#sources">資料來源</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="welcome" class="welcome-fukuoka">
+  <div class="welcome-layout">
+    <div class="welcome-copy">
+      <div class="kicker">Welcome</div>
+      <h2>歡迎來到福岡</h2>
+      <div class="welcome-rule"></div>
+      <p>
+        福岡是日本九州的玄關。從台灣出發距離短，機場又離市中心很近；往南可以前往太宰府，往北可以抵達小倉與門司港，往東則能到海之中道。這趟旅程會把福岡當成九州入口，用不趕路的方式，看見城市生活、歷史文化、海港與自然。
+      </p>
+    </div>
+    <div class="map-visual local-map official-map-set" aria-label="福岡與周邊交通位置示意圖">
+      <div class="official-map-panel">
+        <img src="images/bg-around-japan.svg" alt="福岡與東亞周邊位置示意圖">
+      </div>
+      <div class="official-map-panel">
+        <img src="images/bg-inside-japan.svg" alt="福岡與日本國內主要城市位置示意圖">
+      </div>
+      <svg viewBox="0 0 900 560" role="img" aria-labelledby="welcomeMapTitle welcomeMapDesc">
+        <title id="welcomeMapTitle">福岡與周邊交通位置示意圖</title>
+        <desc id="welcomeMapDesc">以福岡為中心，標示台灣、韓國、香港、新加坡與日本主要城市相對位置。</desc>
+        <rect class="map-sea" width="900" height="560"></rect>
+
+        <g transform="translate(38 242)">
+          <rect x="0" y="0" width="290" height="225" fill="#2f5e59" opacity=".08"></rect>
+          <path class="map-land" d="M0 0H256l-5 38 17 34-27 31 8 36-32 51 5 35H0Z"></path>
+          <path class="map-sea" d="M171 48c26 18 39 37 41 61-29-3-53 3-72 18-5-30 6-56 31-79Z"></path>
+          <path class="map-sea" d="M189 138c24 12 36 30 34 54-21-5-37-1-49 12-10-26-5-48 15-66Z"></path>
+          <path class="map-land-soft" d="M253 33c25 10 34 28 28 54-22-5-35-17-39-38Z"></path>
+          <path class="map-land-soft" d="M249 94c22 6 34 22 35 48-21-1-34-10-41-28Z"></path>
+          <path class="map-land-soft" d="M244 154c22 10 30 27 23 51-21-8-32-22-34-42Z"></path>
+          <rect class="map-tag" x="161" y="60" width="58" height="34"></rect>
+          <text class="map-tag-text" x="190" y="83" text-anchor="middle">韓國</text>
+          <rect class="map-tag" x="85" y="145" width="58" height="34"></rect>
+          <text class="map-tag-text" x="114" y="168" text-anchor="middle">香港</text>
+          <rect class="map-tag" x="144" y="184" width="58" height="34"></rect>
+          <text class="map-tag-text" x="173" y="207" text-anchor="middle">台灣</text>
+          <rect class="map-tag" x="32" y="208" width="74" height="34"></rect>
+          <text class="map-tag-text" x="69" y="231" text-anchor="middle">新加坡</text>
+          <rect class="map-tag" x="211" y="129" width="58" height="34"></rect>
+          <text class="map-tag-text" x="240" y="152" text-anchor="middle">福岡</text>
+        </g>
+
+        <g transform="translate(416 35)">
+          <path class="map-land" d="M316 0c41 21 70 52 87 93 24-5 50 1 78 18-25 18-50 24-75 18-12 38-37 67-76 86-29-18-45-45-48-81-29-5-54-21-75-47 44 0 79-11 107-33Z"></path>
+          <path class="map-land" d="M247 156c49 8 85 33 109 76-33 15-65 18-96 8-33 30-67 45-102 46 23-34 51-61 83-82Z"></path>
+          <path class="map-land" d="M185 258c38 8 67 29 88 63-35 13-70 17-106 11-21 24-45 37-73 39 17-39 47-76 91-113Z"></path>
+          <path class="map-focus" d="M84 342c24 12 39 32 45 61-21 22-48 32-82 28-4-35 9-64 37-89Z"></path>
+          <path class="map-land" d="M52 410c16 9 25 24 26 45-18 8-36 6-53-5 3-20 12-33 27-40Z"></path>
+          <path class="map-land" d="M489 397c28 15 38 39 30 72-29-7-47-24-55-51Z"></path>
+          <path class="map-line" d="M150 464L410 204"></path>
+
+          <text class="map-label" x="70" y="350">北九州</text>
+          <text class="map-label" x="22" y="385">福岡</text>
+          <text class="map-label small" x="205" y="346">大阪</text>
+          <text class="map-label small" x="170" y="311">伊丹機場</text>
+          <text class="map-label small" x="225" y="386">大阪 關西機場</text>
+          <text class="map-label small" x="286" y="355">名古屋</text>
+          <text class="map-label small" x="350" y="308">東京</text>
+          <text class="map-label small" x="318" y="340">羽田機場</text>
+          <text class="map-label small" x="394" y="336">東京 成田機場</text>
+          <text class="map-label small" x="316" y="112">新千歲機場</text>
+          <text class="map-label small" x="512" y="438">沖縄</text>
+
+          <g transform="translate(74 386)">
+            <path class="map-pin" d="M0-22c12 0 22 10 22 22 0 17-22 38-22 38S-22 17-22 0c0-12 10-22 22-22Z"></path>
+            <circle class="map-pin-dot" r="7"></circle>
+          </g>
+          <g transform="translate(102 374)">
+            <path class="map-pin" d="M0-16c9 0 16 7 16 16 0 13-16 29-16 29S-16 13-16 0c0-9 7-16 16-16Z"></path>
+            <circle class="map-pin-dot" r="5"></circle>
+          </g>
+          <g transform="translate(216 368)">
+            <path class="map-pin" d="M0-16c9 0 16 7 16 16 0 13-16 29-16 29S-16 13-16 0c0-9 7-16 16-16Z"></path>
+            <circle class="map-pin-dot" r="5"></circle>
+          </g>
+          <g transform="translate(302 336)">
+            <path class="map-pin" d="M0-16c9 0 16 7 16 16 0 13-16 29-16 29S-16 13-16 0c0-9 7-16 16-16Z"></path>
+            <circle class="map-pin-dot" r="5"></circle>
+          </g>
+          <g transform="translate(370 319)">
+            <path class="map-pin" d="M0-16c9 0 16 7 16 16 0 13-16 29-16 29S-16 13-16 0c0-9 7-16 16-16Z"></path>
+            <circle class="map-pin-dot" r="5"></circle>
+          </g>
+          <g transform="translate(337 121)">
+            <path class="map-pin" d="M0-16c9 0 16 7 16 16 0 13-16 29-16 29S-16 13-16 0c0-9 7-16 16-16Z"></path>
+            <circle class="map-pin-dot" r="5"></circle>
+          </g>
+          <g transform="translate(520 421)">
+            <path class="map-pin" d="M0-14c8 0 14 6 14 14 0 11-14 25-14 25S-14 11-14 0c0-8 6-14 14-14Z"></path>
+            <circle class="map-pin-dot" r="4"></circle>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="prep">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Before You Go</div>
+      <h2>出發前導覽：先掌握福岡的旅行節奏</h2>
+    </div>
+    <p class="note">
+      這趟行程的重點不是收集景點，而是讓旅客在舒服的節奏裡理解福岡。每天只抓少量主題，保留散步、用餐、臨時調整與觀察城市的時間。
+    </p>
+  </div>
+  <div class="grid grid-3">
+    <div class="card">
+      <div class="big-num">01</div>
+      <h3>住博多站附近</h3>
+      <p>太宰府、北九州、海之中道分屬不同方向，博多站是最穩的集合點：機場、市區、JR、新幹線都能順利銜接。</p>
+    </div>
+    <div class="card">
+      <div class="big-num">02</div>
+      <h3>每天只抓主題</h3>
+      <p>每天以「上午一個主點、下午一個主點、晚上好好吃一餐」為節奏。旅途中真正舒服的片刻，常常來自散步、拍照、臨時改店與坐下來休息。</p>
+    </div>
+    <div class="card">
+      <div class="big-num">03</div>
+      <h3>用福岡當九州入口</h3>
+      <p>福岡不只是一串大景點。從博多、太宰府到門司港，旅客會看見九州的商業、信仰、對外交流與海港文化如何交織。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h3>建議攜帶與事前處理</h3>
+    <table class="table">
+      <tr><th>項目</th><th>建議</th></tr>
+      <tr><td>交通</td><td>準備 Suica / ICOCA / 西瓜卡相容 IC 卡；JR 與地鐵轉乘會更順。Day 3 若想省時間，博多到小倉可考慮新幹線。</td></tr>
+      <tr><td>餐廳</td><td>水炊鍋與牛腸鍋建議提早訂位，特別是晚餐。拉麵可彈性，不一定追名店排隊。</td></tr>
+      <tr><td>天氣</td><td>Day 4 海之中道最吃天氣。雨天就把 Marine World 放重一點，海濱公園縮短。</td></tr>
+      <tr><td>行李</td><td>Day 5 回程傍晚，早上退房後把行李寄放飯店或博多站置物櫃。</td></tr>
+      <tr><td>閱讀視角</td><td>每個景點都附上「看什麼」與「背景脈絡」。抵達現場時，不只是拍照，也能理解眼前空間為何重要。</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Overview</div>
+      <h2>旅程概覽：以博多為基地，向九州不同方向展開</h2>
+    </div>
+    <p class="note">
+      各位會以博多站為中心向外移動：市區靠地鐵與步行，太宰府靠西鐵，小倉與門司港靠 JR，海之中道靠 JR 香椎線。路線清楚，節奏就不會變成行軍。
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>交通與每日節奏</h3>
+    <div class="table-wrap">
+      <table class="table">
+        <tr><th>日子</th><th>主要移動</th><th>主題</th><th>晚餐 / 收尾</th><th>壓力</th></tr>
+        <tr><td>Day 1</td><td>桃園 → 福岡機場 → 博多 → 櫛田神社 / 川端</td><td>博多城市初見</td><td>博多拉麵</td><td>低</td></tr>
+        <tr><td>Day 2</td><td>博多 / 天神 → 太宰府 → 博多</td><td>太宰府文化日</td><td>水炊鍋</td><td>中低</td></tr>
+        <tr><td>Day 3</td><td>博多 → 小倉 → 門司港 → 博多</td><td>北九州港口線</td><td>牛腸鍋</td><td>中</td></tr>
+        <tr><td>Day 4</td><td>博多 → 香椎 → 海之中道 → 博多</td><td>海邊與動物</td><td>輕鬆在地餐廳</td><td>中低</td></tr>
+        <tr><td>Day 5</td><td>博多 → 大濠公園 → 福岡城跡 → 福岡機場</td><td>公園與收尾</td><td>傍晚機場</td><td>低</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid grid-3" style="margin-top:18px">
+    <div class="card compact">
+      <h3>抵達策略</h3>
+      <p>若航班時間允許，早班飛機最適合。福岡機場離市區近，抵達後先到博多站附近放行李，第一天只進入博多生活圈，不急著衝遠郊。</p>
+      <div class="route">
+        <span>桃園機場</span><b>→</b><span>福岡機場</span><b>→</b><span>地鐵機場線</span><b>→</b><span>博多站</span>
+      </div>
+    </div>
+    <div class="card compact">
+      <h3>移動原則</h3>
+      <p>每天只抓一個主要方向：太宰府、北九州、海之中道各自成日，不混排跨方向景點。市區日則用步行和短程地鐵慢慢銜接。</p>
+    </div>
+    <div class="card compact">
+      <h3>節奏判斷</h3>
+      <p>Day 1 和 Day 5 保持低壓；Day 3 移動最多但路線單純；Day 4 依天氣調整，雨天就把 Marine World 的時間拉長。</p>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section id="day1" class="day">
+  <div class="day-head">
+    <div>
+      <span class="day-num">Day 1</span>
+      <h2>抵達福岡：博多城市初見</h2>
+      <p class="tagline">今日主題：先熟悉博多的生活節奏，不急著跑遠點。</p>
+      <div class="route">
+        <span>福岡機場</span><b>→</b><span>博多站</span><b>→</b><span>櫛田神社</span><b>→</b><span>川端商店街</span><b>→</b><span>博多運河城</span><b>→</b><span>中洲 / 博多拉麵</span>
+      </div>
+    </div>
+    <div class="day-media-row">
+      <div>
+        <img class="hero-img" src="images/nakasu-yatai.webp" alt="中洲屋台街">
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=%E5%8D%9A%E5%A4%9A%E9%A7%85%20%E6%AB%9B%E7%94%B0%E7%A5%9E%E7%A4%BE%20%E5%B7%9D%E7%AB%AF%E5%95%86%E5%BA%97%E8%A1%97%20%E5%8D%9A%E5%A4%9A%E9%81%8B%E6%B2%B3%E5%9F%8E%20%E4%B8%AD%E6%B4%B2&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>時間配置</h3>
+      <table class="table">
+        <tr><th>時段</th><th>安排</th></tr>
+        <tr><td>上午</td><td>桃園出發，抵達福岡機場後進博多。</td></tr>
+        <tr><td>中午</td><td>博多站附近放行李、簡單午餐。</td></tr>
+        <tr><td>下午</td><td>櫛田神社、川端商店街、運河城可選。</td></tr>
+        <tr><td>晚上</td><td>博多拉麵；有精神再散步到中洲河岸。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-list">
+    <div class="spot">
+      <img src="images/hakata-station.jpg" alt="博多站">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="hakata-station">博多站：先建立交通與住宿座標</button></h3>
+        <p>抵達後，我們先把行李、飯店、地鐵、JR 與餐飲樓層的位置整理清楚。博多站不是今天的觀光高潮，卻是後面太宰府、北九州與海之中道都能順利移動的基地。</p>
+        <div class="meta-line"><span class="mini">路線起點：福岡機場線直達</span><span class="mini">停留：放行李與午餐</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/kushida-shrine.webp" alt="櫛田神社">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="kushida">櫛田神社：博多的地方信仰核心</button></h3>
+        <p>櫛田神社相傳創建於奈良時代，是博多地區的守護神，在當地有「櫛田先生」的親切稱呼。它與博多祇園山笠關係密切，境內可見華麗的飾山笠。來到這裡，重點不只是看神社建築，而是理解一座城市如何透過祭典維持地方身份。</p>
+        <div class="meta-line"><span class="mini">觀察點：祭典與地方認同</span><span class="mini">停留：30–45 分鐘</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/kawabata-shopping-arcade.jpg" alt="川端商店街">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="kawabata">川端商店街：從神社走進博多日常</button></h3>
+        <p>從櫛田神社步行接川端商店街最順，不需要另外搭車。這段路會把神社、老商店街、在地小吃與雨天友善動線串在一起，是 Day 1 最自然的步行段落。</p>
+        <div class="meta-line"><span class="mini">路線：櫛田神社旁步行銜接</span><span class="mini">停留：30–60 分鐘</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/canal-city-hakata.jpg" alt="博多運河城">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="canal-city">博多運河城：體力與天氣允許再加</button></h3>
+        <p>從川端商店街往博多運河城走路很近，適合作為第一天的彈性節點。想吃飯、避雨、買用品或休息都可以進去；如果已經累了，直接略過也不影響主線。</p>
+        <div class="meta-line"><span class="mini">路線：川端往南步行</span><span class="mini">屬性：可選緩衝點</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/nakasu-yatai.webp" alt="中洲屋台街">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="nakasu">中洲屋台街：福岡夜晚的城市表情</button></h3>
+        <p>中洲屋台街適合「看」也適合「吃」。拉麵、串物、關東煮與酒聚在河岸邊，霓虹倒映在那珂川水面上。它的價值不只是食物，而是讓旅客看見福岡如何把夜間飲食、河岸空間、觀光與在地生活混在一起。</p>
+        <div class="meta-line"><span class="mini">觀察點：夜生活與河岸空間</span><span class="mini">停留：30–60 分鐘</span></div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>Day 1 為什麼保持鬆一點</summary>
+    <p>第一天要留給航班、入境、飯店與身體狀態一些彈性。博多城市初見的重點不是「完成景點」，而是建立地理感：博多站是交通核心，櫛田神社是地方精神核心，中洲則是夜晚消費與觀光核心。</p>
+  </details>
+</section>
+
+<section id="day2" class="day">
+  <div class="day-head">
+    <div>
+      <span class="day-num">Day 2</span>
+      <h2>太宰府：學問之神與九州文化入口</h2>
+      <p class="tagline">今日主題：從神社、參道與博物館理解九州文化。</p>
+      <div class="route">
+        <span>博多 / 天神</span><b>→</b><span>太宰府站</span><b>→</b><span>參道</span><b>→</b><span>太宰府天滿宮</span><b>→</b><span>九州國立博物館</span>
+      </div>
+    </div>
+    <div class="day-media-row">
+      <div>
+        <img class="hero-img" src="images/dazaifu-tenmangu.webp" alt="太宰府天滿宮">
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=%E5%A4%AA%E5%AE%B0%E5%BA%9C%E5%A4%A9%E6%BB%BF%E5%AE%AE%20%E4%B9%9D%E5%B7%9E%E5%9C%8B%E7%AB%8B%E5%8D%9A%E7%89%A9%E9%A4%A8&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>時間配置</h3>
+      <table class="table">
+        <tr><th>時段</th><th>安排</th></tr>
+        <tr><td>上午</td><td>前往太宰府，從太宰府站沿參道慢慢走到天滿宮。</td></tr>
+        <tr><td>中午</td><td>參道散步，吃梅枝餅或簡單午餐，再接九州國立博物館。</td></tr>
+        <tr><td>下午</td><td>九州國立博物館，重點看文化交流展示。</td></tr>
+        <tr><td>晚上</td><td>回福岡市區吃水炊鍋。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-list">
+    <div class="spot">
+      <img src="images/dazaifu-approach.jpg" alt="太宰府參道">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="dazaifu-sando">太宰府參道：從車站進入參拜節奏</button></h3>
+        <p>從太宰府站出來會先經過參道，這既是交通動線，也是進入參拜氣氛的過渡。先看商店、吃梅枝餅、感受人流，再走進天滿宮，會比參拜後折回來更符合現場節奏。</p>
+        <div class="meta-line"><span class="mini">路線：太宰府站 → 天滿宮</span><span class="mini">必吃：梅枝餅</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/dazaifu-tenmangu-plum.webp" alt="太宰府天滿宮梅花">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="dazaifu">太宰府天滿宮：菅原道真與「學問之神」</button></h3>
+        <p>太宰府天滿宮主祭神是菅原道真。道真原本是才華出眾的學者、文人與政治家，後因政治鬥爭被貶至太宰府，並在此地病逝。後世將他尊為學問之神，天滿宮因此成為考生與學習者的重要參拜地。</p>
+        <p>抵達現場時，可以留意三件事：第一，神社如何把歷史人物轉化成信仰；第二，參道商業如何圍繞參拜動線發展；第三，梅花、御神牛、太鼓橋等符號如何強化「學問與祈願」的空間感。</p>
+        <div class="meta-line"><span class="mini">觀察點：歷史人物神格化</span><span class="mini">必吃：梅枝餅</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/kyushu-national-museum.webp" alt="九州國立博物館">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="kyuhaku">九州國立博物館：從亞洲史看日本文化</button></h3>
+        <p>九州國立博物館是日本第四座國立博物館。太宰府在古代曾是九州政治與對外交流的重要節點，因此博物館不是單純展示「日本國內史」，而是以日本與亞洲、歐亞各地的文化交流為主軸。</p>
+        <p>建議重點看 4 樓常設展「文化交流展示室」。這裡可以作為 Day 2 的核心：太宰府天滿宮看信仰如何被建構，九博看日本文化如何在交流中形成。</p>
+        <div class="meta-line"><span class="mini">觀察點：日本與亞洲交流</span><span class="mini">停留：90–150 分鐘</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day3" class="day">
+  <div class="day-head">
+    <div>
+      <span class="day-num">Day 3</span>
+      <h2>小倉與門司港：城、港口與九州邊界</h2>
+      <p class="tagline">今日主題：看北九州如何連接本州、九州與近代貿易。</p>
+      <div class="route">
+        <span>博多</span><b>→</b><span>小倉城</span><b>→</b><span>小倉站</span><b>→</b><span>門司港懷舊區</span><b>→</b><span>關門海峽</span>
+      </div>
+    </div>
+    <div class="day-media-row">
+      <div>
+        <img class="hero-img" src="images/mojiko-retro.webp" alt="門司港懷舊區">
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=%E5%B0%8F%E5%80%89%E5%9F%8E%20%E9%96%80%E5%8F%B8%E6%B8%AF%E6%87%B7%E8%88%8A%E5%8D%80%20%E9%97%9C%E9%96%80%E6%B5%B7%E5%B3%BD&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>今日導覽重點：</b>小倉和門司港不是兩個硬塞的遠點。它們都在北九州市，小倉到門司港電車約 15 分鐘。今天的節奏是「小倉城簡單看，重點放門司港」。
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>時間配置</h3>
+      <table class="table">
+        <tr><th>時段</th><th>安排</th></tr>
+        <tr><td>上午</td><td>博多出發到小倉，參觀小倉城與周邊。</td></tr>
+        <tr><td>中午</td><td>小倉或門司港午餐；門司港可吃焗烤咖哩。</td></tr>
+        <tr><td>下午</td><td>門司港懷舊區、港邊散步、關門海峽。</td></tr>
+        <tr><td>晚上</td><td>回博多吃牛腸鍋。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-list">
+    <div class="spot">
+      <img src="images/kokura-castle.webp" alt="小倉城">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="kokura-castle">小倉城：福岡縣唯一擁有天守閣的城堡</button></h3>
+        <p>小倉城位於 JR 小倉站步行範圍內，是北九州小倉地區的重要象徵。天守內不只看外觀，還有介紹城堡 400 餘年歷史、北九州作為本州與九州玄關的展示。我們可以用「城市如何把歷史包裝成現代觀光體驗」來看它。</p>
+        <div class="meta-line"><span class="mini">觀察點：城堡展示的現代化</span><span class="mini">停留：60–90 分鐘</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/mojiko-port.webp" alt="門司港">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="mojiko">門司港懷舊區：明治、大正到現代的港町再生</button></h3>
+        <p>門司港位於九州最北端，面向關門海峽，對岸就是山口縣下關。明治到大正時期，門司港作為國際貿易港繁榮，後來港口功能縮小，城市以保存與再利用歷史建築的方式發展出「門司港懷舊」區域。</p>
+        <p>這裡最適合慢慢走：看復古建築、看港口、看海峽、吃焗烤咖哩。它比單一景點更像一個「城市再生案例」。</p>
+        <div class="meta-line"><span class="mini">觀察點：港口城市再生</span><span class="mini">必吃：焗烤咖哩</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/kanmon-strait.webp" alt="關門橋">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="kanmon">關門海峽：九州與本州的邊界感</button></h3>
+        <p>關門海峽隔開九州與本州，連接北九州與下關。這裡最有價值的不是「拍一座橋」，而是感受日本列島的交通節點：海峽、橋、隧道、港口與城市如何構成一個邊界地帶。</p>
+        <div class="meta-line"><span class="mini">觀察點：地理邊界與交通節點</span><span class="mini">可選：不一定走人道隧道</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="day4" class="day">
+  <div class="day-head">
+    <div>
+      <span class="day-num">Day 4</span>
+      <h2>海之中道：水族館、動物與海邊公園</h2>
+      <p class="tagline">今日主題：讓旅程從城市與歷史切換到自然與動物。</p>
+      <div class="route">
+        <span>博多</span><b>→</b><span>香椎</span><b>→</b><span>海之中道站</span><b>→</b><span>Marine World</span><b>→</b><span>海濱公園</span>
+      </div>
+    </div>
+    <div class="day-media-row">
+      <div>
+        <img class="hero-img" src="images/marine-world.webp" alt="海洋世界海之中道">
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=Marine%20World%20Uminonakamichi%20%E6%B5%B7%E4%B9%8B%E4%B8%AD%E9%81%93%E6%B5%B7%E6%BF%B1%E5%85%AC%E5%9C%92&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>時間配置</h3>
+      <table class="table">
+        <tr><th>時段</th><th>安排</th></tr>
+        <tr><td>上午</td><td>先到 Marine World，看主要展區與表演時間。</td></tr>
+        <tr><td>中午</td><td>園區或車站附近簡單用餐。</td></tr>
+        <tr><td>下午</td><td>海之中道海濱公園，重點看動物之森與海邊散步，不追求全走完。</td></tr>
+        <tr><td>晚上</td><td>回博多，吃輕鬆在地餐廳。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-list">
+    <div class="spot">
+      <img src="images/marine-world.webp" alt="Marine World">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="marine-world">Marine World 海之中道：以「九州大海」為主題</button></h3>
+        <p>Marine World 於 1989 年開幕，以「九州大海」為主題，展示約 350 種、3 萬隻生物。它的特色不是單純水族箱，而是嘗試再現九州的海洋環境，並透過海豚、海獅、海獺餵食等表演讓觀察更容易進入。</p>
+        <p>這裡可以當成旅程中的休息日主體：不用太用腦，但仍然有觀察點，也就是九州周邊海洋如何被轉譯成觀光展示。</p>
+        <div class="meta-line"><span class="mini">觀察點：自然展示設計</span><span class="mini">停留：2–3 小時</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/uminonakamichi-seaside-park.jpg" alt="海之中道海濱公園">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="uminonakamichi">海之中道海濱公園：不用走完的巨大公園</button></h3>
+        <p>海之中道海濱公園位於博多灣與玄界灘之間，東西長約 6 公里，面積約 350 公頃。它是超大尺度的國營公園，有四季花卉、活動設施，也有可與動物接觸的「動物之森」。</p>
+        <p>這裡最重要的策略是：不需要走完整座園區。今天只抓「動物、海邊、花、散步」幾個元素，讓整趟旅行有一段低壓、開闊、自然的呼吸感。</p>
+        <div class="meta-line"><span class="mini">觀察點：城市邊緣的海濱休閒</span><span class="mini">停留：90–150 分鐘</span></div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>雨天備案</summary>
+    <p>雨天時把 Marine World 拉長，海濱公園只做短距離散步或直接取消。不需要為了完成行程而在大公園裡淋雨，這天的目的本來就是放鬆。</p>
+  </details>
+</section>
+
+<section id="day5" class="day">
+  <div class="day-head">
+    <div>
+      <span class="day-num">Day 5</span>
+      <h2>大濠公園與福岡城跡：安靜收尾</h2>
+      <p class="tagline">今日主題：最後一天不跑遠，用城市公園與城跡收束旅程。</p>
+      <div class="route">
+        <span>博多飯店</span><b>→</b><span>大濠公園</span><b>→</b><span>福岡城跡</span><b>→</b><span>博多伴手禮</span><b>→</b><span>福岡機場</span>
+      </div>
+    </div>
+    <div class="day-media-row">
+      <div>
+        <img class="hero-img" src="images/ohori-park.webp" alt="大濠公園">
+      </div>
+      <div class="mapbox">
+        <iframe loading="lazy" src="https://www.google.com/maps?q=%E5%A4%A7%E6%BF%A0%E5%85%AC%E5%9C%92%20%E7%A6%8F%E5%B2%A1%E5%9F%8E%E8%B7%A1%20%E5%8D%9A%E5%A4%9A%E9%A7%85&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>時間配置</h3>
+      <table class="table">
+        <tr><th>時段</th><th>安排</th></tr>
+        <tr><td>上午</td><td>退房寄放行李，前往大濠公園散步。</td></tr>
+        <tr><td>中午</td><td>大濠 / 天神 / 博多午餐。</td></tr>
+        <tr><td>下午</td><td>福岡城跡、博多站購物與伴手禮。</td></tr>
+        <tr><td>傍晚</td><td>前往福岡機場，18:00–19:00 左右航班回台。</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-list">
+    <div class="spot">
+      <img src="images/ohori-park.webp" alt="大濠公園">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="ohori">大濠公園：福岡市民的都市綠洲</button></h3>
+        <p>大濠公園位於福岡市中心，總面積約 39.8 公頃，巨大水池佔了超過一半。這個水池原本與福岡城的外護城河有關，後來成為市民休閒空間。水池周圍有約 2 公里的步道，適合慢走與觀察在地生活。</p>
+        <p>最後一天安排這裡很合理：它不需要門票、不需要趕時間，也能讓旅客用比較安靜的方式結束福岡。</p>
+        <div class="meta-line"><span class="mini">觀察點：都市公園與市民生活</span><span class="mini">停留：60–90 分鐘</span></div>
+      </div>
+    </div>
+    <div class="spot">
+      <img src="images/fukuoka-castle-ruins.webp" alt="福岡城跡">
+      <div>
+        <h3 class="spot-title"><button type="button" data-modal="fukuoka-castle">福岡城跡：黑田家的城與城市記憶</button></h3>
+        <p>福岡城由戰國時代武將黑田孝高與其子長政自 1601 年起建造，耗時 7 年完成，是江戶時代福岡藩黑田家的居城，也被稱為舞鶴城。據說曾是九州最大規模的城堡之一。</p>
+        <p>今天看見的多是城跡、石垣與公園化後的空間。它適合跟大濠公園一起看：一邊是城下町權力中心的遺跡，一邊是轉化後的市民休閒空間。</p>
+        <div class="meta-line"><span class="mini">觀察點：權力空間如何轉為公共空間</span><span class="mini">停留：45–75 分鐘</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="food">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Food Plan</div>
+      <h2>美食導覽：拉麵、水炊鍋、牛腸鍋各放在對的夜晚</h2>
+    </div>
+  </div>
+  <div class="food-grid">
+    <div class="card food-card">
+      <img src="images/food-hakata-ramen.jpg" alt="博多拉麵">
+      <div class="food-card-body">
+        <h3>Day 1：博多拉麵</h3>
+        <p>剛抵達福岡時，不需要立刻安排太重的套餐。博多拉麵最適合當作進入福岡的第一餐；博多站、祇園、天神周邊都容易找到選擇，不一定要排觀光名店。</p>
+        <div class="food-note">
+          <div><b>特色：</b>豚骨白湯、細直麵、上桌快，常見替玉加麵。</div>
+          <div><b>注意：</b>麵硬度可選，第一次建議普通或硬麵；蒜、紅薑、辛子高菜先少量加，避免蓋掉湯頭。</div>
+          <div><b>適合：</b>Day 1 晚上，行程彈性高，吃完可散步到中洲或回飯店休息。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card food-card">
+      <img src="images/food-mizutaki.jpg" alt="水炊鍋">
+      <div class="food-card-body">
+        <h3>Day 2：水炊鍋</h3>
+        <p>太宰府與九博這天偏文化，晚上適合慢慢吃水炊鍋。水炊鍋是福岡代表鍋物之一，湯頭清爽但層次細，建議先訂位。</p>
+        <div class="food-note">
+          <div><b>特色：</b>以雞骨與雞肉熬出清爽但有膠質的湯，通常先喝湯，再吃雞肉、蔬菜與豆腐。</div>
+          <div><b>注意：</b>很多店是套餐制，晚餐價格較高；重點是湯與雞肉本味，不是重口味鍋底。</div>
+          <div><b>適合：</b>Day 2 從太宰府回市區後，坐下來慢慢吃，節奏比拉麵正式。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card food-card">
+      <img src="images/food-motsunabe.jpg" alt="牛腸鍋">
+      <div class="food-card-body">
+        <h3>Day 3：牛腸鍋</h3>
+        <p>小倉與門司港回來後，安排牛腸鍋最有「旅行一天後好好吃飯」的感覺。經典口味常見醬油、味噌、鹽味，是福岡夜晚很有代表性的鍋物。</p>
+        <div class="food-note">
+          <div><b>特色：</b>牛腸油脂、韭菜、高麗菜與蒜香是主角，湯底常見醬油或味噌。</div>
+          <div><b>注意：</b>口味偏濃、偏油，建議不要排在太晚；怕內臟口感的人可先確認店家有無其他單點。</div>
+          <div><b>適合：</b>Day 3 北九州回博多後，作為比較有儀式感的一餐，最後可加麵或雜炊收尾。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+      <h3>不需要每天都大餐</h3>
+      <p>Day 4 可以簡單吃在地餐廳，Day 5 補明太子、海鮮、定食或伴手禮即可。這樣不會連續三天吃得太油太滿，旅程體感會比較舒服。</p>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Sources</div>
+      <h2>資料來源與圖片說明</h2>
+    </div>
+    <p class="note">本導覽手冊以 GLTJP「好運日本行」文章與景點頁為主要資料來源；圖片已下載到本專案的 images 目錄，部分壞掉的原圖改用官方觀光頁或景點官方頁的可用版本。實際營業時間、休館日、門票、航班與交通班次，出發前仍建議以官方頁面確認。</p>
+  </div>
+  <div class="card">
+    <ul class="source-list">
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20744/" target="_blank">GLTJP：福岡自由行完整指南</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20547/" target="_blank">GLTJP：博多必去景點16選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20187/" target="_blank">GLTJP：福岡必去景點21選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20434/" target="_blank">GLTJP：太宰府天滿宮完整指南</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20582/" target="_blank">GLTJP：太宰府市必去景點8選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/21022/" target="_blank">GLTJP：小倉必去景點17選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/21004/" target="_blank">GLTJP：門司港必去景點11選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20355/" target="_blank">GLTJP：海之中道海濱公園完整指南</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20881/" target="_blank">GLTJP：福岡親子推薦景點17選</a></li>
+      <li><a href="https://www.gltjp.com/zh-hant/article/item/20912/" target="_blank">GLTJP：福岡必吃美食與推薦店家</a></li>
+      <li><a href="https://gofukuoka.jp/" target="_blank">FUKUOKA CITY Official Tourist Guide：博多站與川端商店街替代圖片</a></li>
+      <li><a href="https://www.canalcity-sightseeing.com/" target="_blank">Canal City Hakata Official Site：博多運河城替代圖片</a></li>
+      <li><a href="https://www.dazaifutenmangu.or.jp/" target="_blank">Dazaifu Tenmangu Official Site：太宰府參道替代圖片</a></li>
+      <li><a href="https://www.crossroadfukuoka.jp/images/languages/front/zh-TW/bg-around-japan.svg" target="_blank">Crossroad Fukuoka：福岡區位介紹官方地圖 SVG</a></li>
+      <li><a href="https://www.crossroadfukuoka.jp/images/languages/front/zh-TW/bg-inside-japan.svg" target="_blank">Crossroad Fukuoka：福岡日本國內位置官方地圖 SVG</a></li>
+      <li><a href="https://www.crossroadfukuoka.jp/en/photo/390" target="_blank">Crossroad Fukuoka Photo Gallery：海之中道海濱公園替代圖片</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Hakata-style_ramen.jpg" target="_blank">Wikimedia Commons：博多拉麵圖片</a></li>
+      <li><a href="https://www.foodinjapan.org/kyushu/fukuoka-en/mizutaki/" target="_blank">Food in Japan：水炊鍋圖片與美食參考</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Fukuoka-style_hot_pot_(3637375629).jpg" target="_blank">Wikimedia Commons：牛腸鍋圖片</a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="footer">
+  <p>版本：福岡五天四夜城市導覽手冊 v1。設計方向：低壓、文化、城市觀察、在地美食。圖片已改為本機 images 目錄引用，避免來源網站調整圖片路徑造成破圖。</p>
+</div>
+
+</main>
+
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    
+  <article class="modal-content" id="modal-hakata-station" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/hakata-station.jpg" alt="博多站"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 1 · 深度景點介紹</div>
+      <h2 class="modal-title">博多站</h2>
+      <p class="modal-subtitle">九州旅行的交通玄關，也是這趟行程最合理的基地。</p>
+      <div class="modal-meta"><span>交通樞紐</span><span>住宿基地</span><span>商業空間</span><span>建議停留：60–90 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/hakata-station.jpg" alt="博多站 圖片"><img src="images/hakata-station.jpg" alt="博多站 圖片"></div>
+          <p>博多站不是傳統意義上的觀光景點，但對這趟五天旅行來說，它是最重要的基礎設施。本次行程有三種不同方向：太宰府在福岡市南側，小倉與門司港在北九州市，海之中道在福岡市東側。如果住宿放在天神，吃飯逛街會很舒服；但一旦開始往外跑，博多站的優勢就會變得非常明顯。它不是單純一個車站，而是福岡與九州交通的節點。</p><p>從旅遊體驗來看，博多站也很值得觀察。日本大型車站通常不是純交通設施，而是把百貨、地下街、餐飲、旅客服務、地方物產與城市入口整合在一起。各位在博多站會看到旅客、上班族、通勤者、觀光客在同一個系統裡流動。這種空間其實很像一座城市的小型縮影：站內動線越清楚，城市越容易被遊客理解。</p><p>這趟旅行第一天不建議各位一落地就跑遠點，原因也在這裡。抵達後先把博多站與飯店的相對位置搞清楚，熟悉地下街、JR 改札口、地鐵入口、巴士總站與餐廳樓層，之後幾天的焦慮感會大幅降低。對不喜歡通勤感太重的人來說，事前熟悉交通基地本身就是行程品質的一部分。</p><p>實際玩法上，博多站適合放在 Day 1 與 Day 5。Day 1 它是旅客進入福岡的第一個城市場景；Day 5 它則是整理行李、買伴手禮、前往機場前的收束點。不要只把它當成轉車地點，反而可以花一點時間觀察：九州地方物產如何被包裝給旅客？餐飲樓層如何設計選擇？車站外廣場與城市街道如何銜接？這些都能讓旅客更快理解福岡作為九州門戶的角色。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>把博多站看成「福岡旅行作業系統」：機場線、新幹線、JR、市內巴士、百貨、餐廳與伴手禮都在這裡交會。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>先確認飯店、車站、地下街與計程車乘車處的位置</li><li>觀察日本大型車站如何把交通與商業整合在一起</li><li>Day 5 可把伴手禮與最後購物集中在這裡</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-kushida" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/kushida-shrine.webp" alt="櫛田神社"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 1 · 深度景點介紹</div>
+      <h2 class="modal-title">櫛田神社</h2>
+      <p class="modal-subtitle">守護博多的「櫛田先生」，也是博多祇園山笠的精神中心。</p>
+      <div class="modal-meta"><span>地方信仰</span><span>博多祇園山笠</span><span>飾山笠</span><span>建議停留：30–60 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/kushida-shrine.webp" alt="櫛田神社 圖片"><img src="images/kushida-shrine.webp" alt="櫛田神社 圖片"></div>
+          <p>櫛田神社是理解博多最好的入口之一。它相傳創建於奈良時代，被博多民眾親切稱為「櫛田先生」，這個稱呼本身就說明它不是遙遠的宗教古蹟，而是深嵌在地方生活裡的守護神社。GLTJP 的景點資料也提到，櫛田神社每年 7 月舉行博多祇園山笠，境內除 6 月外一年四季都能看到壯觀的飾山笠。</p><p>博多祇園山笠是理解櫛田神社的關鍵。這個祭典正式名稱是櫛田神社祇園例大祭，與疫病退散、都市清淨、地方男子氣概、社區分工都有關。當各位看到山笠時，不要只把它當成大型裝飾物。它是一種把信仰、競技、街區榮譽與城市記憶結合起來的媒介。對博多人來說，山笠不是單純觀光表演，而是地方身份被反覆確認的方式。</p><p>這裡也能讓旅客觀察日本城市中常見的現象：神社並不一定脫離商業區，反而常常嵌在城市肌理裡。櫛田神社旁邊就是商店街與博多市區，幾分鐘內就能從神聖空間走進消費空間。這種切換很有意思，因為它不像歐洲大教堂那樣用巨大的尺度壓倒城市，而是以日常、節慶、參拜與街區記憶形成存在感。</p><p>參觀時可以放慢腳步，不要只是拍鳥居與主殿。各位可以看參拜者的動線、看境內展示、看飾山笠的細節，也可以留意神社裡與豐臣秀吉重建博多相關的歷史痕跡。對這趟旅程來說，櫛田神社的價值不是壯觀，而是讓旅客在第一天就理解：福岡的魅力不是單一大景點，而是日常城市與地方文化的疊合。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它讓旅客看到博多不是只有商業與拉麵，還有非常強的地方祭典與社區身份。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>境內的飾山笠與祭典符號</li><li>神社如何與商店街、城市街區共存</li><li>地方居民與觀光客在同一空間中的使用方式</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-kawabata" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/kawabata-shopping-arcade.jpg" alt="川端商店街"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 1 · 深度景點介紹</div>
+      <h2 class="modal-title">川端商店街</h2>
+      <p class="modal-subtitle">從博多在地生活切入，比大型百貨更有街區感。</p>
+      <div class="modal-meta"><span>商店街</span><span>博多日常</span><span>雨天友善</span><span>建議停留：30–60 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/kawabata-shopping-arcade.jpg" alt="川端商店街 圖片"><img src="images/kushida-shrine.webp" alt="川端商店街 圖片"></div>
+          <p>川端商店街適合接在櫛田神社之後。它不是最華麗的購物區，也不是最潮的街區，但它保留了日本地方商店街很典型的結構：有遮雨的拱廊、有老店、有小吃、有日常用品，也有面向觀光客的伴手禮與餐飲。對旅客來說，這種地方比單純大百貨更能看見城市生活的底層節奏。</p><p>商店街值得看的不是單一店家，而是它如何串連城市。各位可以從櫛田神社走到川端，再往中洲或博多運河城延伸。短短一段路就能經過神社、商店街、河岸、商業設施與夜生活區。這種密度是福岡好玩的地方：它不像東京那樣龐大到必須依賴地鐵，也不像小城那樣選擇有限，而是在步行範圍內疊出很多不同城市表情。</p><p>如果各位想用觀察者角度看川端商店街，可以留意三件事。第一，哪些店明顯服務在地居民，哪些店明顯服務觀光客。第二，傳統商店街如何面對大型商業設施與網路消費。第三，街道的尺度如何影響人停留的意願。日本很多城市的魅力都藏在這種不算壯觀、但很有生活感的商店街裡。</p><p>實際行程上，川端商店街不用特別排很久。它比較像 Day 1 的緩衝帶：剛抵達福岡，身體還在適應，這裡可以讓大家邊走邊吃、邊看城市。若下雨，它也能成為很好的替代路線。不必期待它像東京新宿或大阪心齋橋那樣刺激，它的價值在於尺度剛好、位置剛好，而且能讓旅客開始進入博多的日常紋理。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它能補上櫛田神社旁邊的生活面，讓旅客看到信仰、商業與日常採買如何連成一條街。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>老商店街與觀光店的混合</li><li>地方小吃、伴手禮與居民採買的比例</li><li>商店街與神社、河岸、博多站之間的動線</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-canal-city" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/canal-city-hakata.jpg" alt="博多運河城"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 1 · 深度景點介紹</div>
+      <h2 class="modal-title">博多運河城</h2>
+      <p class="modal-subtitle">大型複合商業設施，適合作為第一天的可選緩衝點。</p>
+      <div class="modal-meta"><span>複合商場</span><span>運河空間</span><span>雨天備案</span><span>建議停留：45–90 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/canal-city-hakata.jpg" alt="博多運河城 圖片"><img src="images/canal-city-hakata-2.jpg" alt="博多運河城 圖片"></div>
+          <p>博多運河城是大型複合商業設施，包含購物、餐飲、劇場、飯店與水景空間。它不是這趟旅程的文化主軸，也不是導覽上會特別安排大家深度停留的地方，但它在 Day 1 很有功能性。剛抵達時，天氣、體力與行李狀況都還不穩，這種交通方便、選擇多、可以吃飯也可以避雨的地方，能讓第一天更安全。</p><p>從空間設計角度看，運河城有一個很明確的企圖：它不想只做封閉百貨，而是把水景、挑高中庭、半戶外空間與活動舞台放進商場。這類設計的核心是延長停留時間。人不是只來買東西，而是沿著水景走、看表演、吃飯、拍照，最後自然產生消費。從體驗設計角度看，這也可以當成一個線下空間動線案例。</p><p>不過，它的缺點也很明顯：如果期待的是在地人文、歷史脈絡或城市觀察，它可能稍微偏觀光商業。各位可以去，但不要把它當成福岡的精華。把它放在第一天，是因為第一天本來就不適合太硬；把它當作一個舒服的緩衝點，遠比把它當成必訪景點合理。</p><p>實際玩法上，建議各位從櫛田神社、川端商店街走過來，停留 45 到 90 分鐘即可。可以吃點東西、補買用品、看一下中庭水景。如果走進去後覺得「這就是一個商場」，也不用勉強久留。這趟旅行真正有深度的地方在太宰府、門司港與福岡城跡，運河城的角色是讓第一天順利落地。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它不是此行核心，但很適合第一天當作天氣不好、體力普通、想輕鬆吃逛的備案。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>商場如何用水景與動線創造停留</li><li>觀光客商場與在地消費空間的差異</li><li>是否真的符合各位的旅行節奏</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-nakasu" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/nakasu-yatai.webp" alt="中洲屋台街"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 1 · 深度景點介紹</div>
+      <h2 class="modal-title">中洲屋台街</h2>
+      <p class="modal-subtitle">福岡夜晚的飲食劇場，適合看城市如何在夜裡變形。</p>
+      <div class="modal-meta"><span>夜生活</span><span>屋台文化</span><span>河岸空間</span><span>建議停留：30–75 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/nakasu-yatai.webp" alt="中洲屋台街 圖片"><img src="images/nakasu-yatai.webp" alt="中洲屋台街 圖片"></div>
+          <p>中洲屋台街是福岡最具代表性的夜間風景之一。它之所以吸引人，不只是因為可以吃拉麵、烤物或關東煮，而是因為屋台把餐飲變成一種小型劇場。座位少、距離近、料理就在眼前製作，客人與老闆、客人與客人之間的距離被刻意縮短。這種體驗和一般餐廳完全不同。</p><p>屋台文化本身也很值得觀察。現代城市通常傾向於把餐飲規範化、室內化、品牌化，但屋台保留了一種臨時、街頭、可拆卸的城市使用方式。白天這裡可能只是河岸或道路邊，晚上卻變成一排有光、有味道、有聲音的小型社交空間。這種轉換，就是城市夜生活的魅力。</p><p>不過，屋台也不是完美體驗。它可能比較擠，價格未必比一般店便宜，也可能有觀光化的問題。我們可以把它當作「看福岡夜晚」的一部分，而不一定要把正餐完全押在這裡。如果各位想吃得穩，第一晚可以先找一間博多拉麵店，之後再去中洲散步看屋台。這樣體驗更安全，也不會因為排隊或踩雷影響第一晚心情。</p><p>現場觀察時，建議各位走慢一點，看屋台如何擺設、菜單如何呈現、客人如何入座、老闆如何招呼。河岸的霓虹與水面反光也讓中洲有很強的畫面感。對這趟旅程來說，中洲不一定是最深的文化點，但它是很好的第一晚開場：各位會立刻知道福岡不是冷冰冰的城市，而是一座很會吃、很會在夜裡打開自己的城市。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它能讓旅客在第一晚看見福岡最有辨識度的夜間場景：食物、河岸、霓虹與人群。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>屋台如何把餐飲變成社交場景</li><li>遊客與在地客的比例</li><li>河岸夜景如何放大城市記憶點</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-dazaifu" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/dazaifu-tenmangu.webp" alt="太宰府天滿宮"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 2 · 深度景點介紹</div>
+      <h2 class="modal-title">太宰府天滿宮</h2>
+      <p class="modal-subtitle">全國天滿宮信仰的重要中心，祭祀學問、文化與藝術之神菅原道真。</p>
+      <div class="modal-meta"><span>學問之神</span><span>菅原道真</span><span>天滿宮信仰</span><span>建議停留：90–120 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/dazaifu-tenmangu.webp" alt="太宰府天滿宮 圖片"><img src="images/dazaifu-tenmangu-plum.webp" alt="太宰府天滿宮 圖片"></div>
+          <p>太宰府天滿宮是 Day 2 的核心。它祭祀的是菅原道真，也就是後來被尊為「天神」的學問、文化與藝術之神。官方資料指出，太宰府天滿宮是日本重要神社之一，也是全國約 12,000 座天滿宮的總本社之一，每年吸引大量參拜者。對觀光客來說，它很容易被理解成求學業的神社；但如果各位願意多看一層，它其實呈現了日本如何把歷史人物轉化為信仰系統。</p><p>菅原道真原本是平安時代的學者、詩人與政治家，後因政治鬥爭被貶到太宰府，最終在此去世。後世將他的怨靈、才華、忠誠與文化形象重新詮釋，逐漸形成天神信仰。這種過程很有意思：一個現實政治失敗者，經由傳說、災異解釋、朝廷追贈與民間信仰，最後變成全國性神格。這就是日本宗教與歷史記憶很典型的交會方式。</p><p>參觀時不只看主殿，可以注意整個空間如何說故事。御神牛象徵與道真相關的傳說，梅花連結道真對梅的喜愛，太鼓橋與心字池則讓參拜者在進入主殿前經歷一段象徵性的過渡。參道上的梅枝餅、伴手禮與咖啡店，也把信仰轉換成日常消費與旅行記憶。這不是壞事，而是神社觀光能長久存在的原因。</p><p>如果想讓旅行更有深度，太宰府天滿宮很適合用來練習『現場閱讀』。各位可以思考：這裡哪些東西是歷史？哪些是信仰？哪些是後來觀光化的設計？哪些又是當地人仍然認真使用的日常宗教空間？當各位能分辨這些層次，神社就不再只是拍照背景，而會變成一個理解日本文化如何運作的模型。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它能把「參拜景點」變成理解日本如何把歷史人物、信仰與教育願望結合的入口。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>御神牛、梅花、太鼓橋等象徵</li><li>參拜動線與參道商業</li><li>臨時本殿或本殿建築如何處理傳統與當代</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-dazaifu-sando" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/dazaifu-approach.jpg" alt="太宰府參道"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 2 · 深度景點介紹</div>
+      <h2 class="modal-title">太宰府參道</h2>
+      <p class="modal-subtitle">從車站到神社的商業動線，梅枝餅與伴手禮構成參拜前奏。</p>
+      <div class="modal-meta"><span>參道商業</span><span>梅枝餅</span><span>地方伴手禮</span><span>建議停留：45–75 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/dazaifu-approach.jpg" alt="太宰府參道 圖片"><img src="images/dazaifu-approach.jpg" alt="太宰府參道 圖片"></div>
+          <p>太宰府參道是從太宰府站通往天滿宮的主要步行軸線。很多人會把參道看成只是買吃的地方，但它其實是神社體驗的一部分。人在抵達主殿前，先經過商店、香氣、人潮、伴手禮與地方小吃，情緒會逐漸進入參拜狀態。這種從交通空間到宗教空間的過渡，是日本神社寺院觀光很重要的設計。</p><p>梅枝餅是這裡最具代表性的食物。它通常是薄餅皮包紅豆餡，表面烙上梅花印記，和菅原道真、梅花意象連在一起。各位不一定要把它神秘化，但它很適合作為觀察案例：一個地方如何用可食用、可攜帶、可分享的方式，把歷史人物與地方象徵變成記憶點。吃梅枝餅不是只是吃甜點，而是在消費一個被地方反覆講述的符號。</p><p>參道上也能看到傳統與現代的並置。有老式和菓子店，也有設計感強烈的咖啡店與伴手禮店。這種衝突不一定是壞事，反而說明太宰府不是被凍結在過去的古蹟，而是一個持續被觀光、商業與當代設計更新的地方。各位可以觀察哪些設計讓人覺得舒服，哪些讓人覺得過度觀光化。</p><p>行程上，參道不要匆匆走過。建議各位留 45 到 75 分鐘，不是為了逛每一家店，而是讓 Day 2 的節奏不要太硬。先吃一個梅枝餅，慢慢走到神社，再從神社去九州國立博物館。這樣太宰府會變成一個完整的半日文化體驗，而不是『拍天滿宮、買伴手禮、走人』的淺層行程。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>參道讓旅客看到宗教空間外圍如何被飲食、商品與動線包裝成完整旅遊體驗。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>梅枝餅店家的密度與排隊方式</li><li>傳統店、現代咖啡、設計建築如何共存</li><li>人流如何被導向天滿宮</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-kyuhaku" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/kyushu-national-museum.webp" alt="九州國立博物館"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 2 · 深度景點介紹</div>
+      <h2 class="modal-title">九州國立博物館</h2>
+      <p class="modal-subtitle">用亞洲交流史理解日本文化，而不是只看日本內部史。</p>
+      <div class="modal-meta"><span>國立博物館</span><span>文化交流</span><span>亞洲史</span><span>建議停留：90–150 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/kyushu-national-museum.webp" alt="九州國立博物館 圖片"><img src="images/kyushu-national-museum.webp" alt="九州國立博物館 圖片"></div>
+          <p>九州國立博物館是這趟行程中最值得認真看的室內景點。它與東京、京都、奈良的國立博物館不同，定位上更強調日本與亞洲、歐亞之間的文化交流。這非常適合放在太宰府，因為太宰府自古就是九州的政治、軍事與對外交流重地。也就是說，這座博物館不是硬塞在觀光區旁邊，而是和地方歷史有很深的關係。</p><p>對旅客來說，九博最重要的不是看多少件展品，而是換一種看日本文化的方式。很多人旅行日本時，容易把日本文化看成純粹、封閉、獨特的東西；但九博會提醒各位，日本文化長期是在與中國、朝鮮半島、東南亞乃至更遠地區的交流中形成的。佛教、文字、陶瓷、金工、服飾、貿易品，都能看見外來影響如何被吸收、改造、在地化。</p><p>參觀時建議各位不必每一件展品都細看，那會很累。各位可以抓三條線：第一，物品從哪裡來；第二，它如何進入日本；第三，日本人如何重新使用或賦予意義。這種看法會讓博物館變成一個文明流動的地圖，而不是一堆玻璃櫃。如果想在旅行前先建立背景，這裡會是非常好的練習場。</p><p>九博也能補足太宰府天滿宮的不足。神社展示的是信仰與地方記憶；博物館展示的是更廣的歷史交流。兩者放在同一天，會形成很好的互補：上午從神社理解人物如何被神格化，下午從博物館理解文化如何跨地域移動。這種組合比單純多跑一個景點更有價值，也更符合這趟旅程的深度取向。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它最符合這趟想要的深度：把旅遊從景點轉成理解文明交流。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>建築外觀與山林環境的關係</li><li>常設展如何講日本與亞洲的往來</li><li>展品說明如何把物件放回交流脈絡</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-kokura-castle" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/kokura-castle.webp" alt="小倉城"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 3 · 深度景點介紹</div>
+      <h2 class="modal-title">小倉城</h2>
+      <p class="modal-subtitle">北九州的城市象徵，適合看歷史如何被轉譯成現代展示。</p>
+      <div class="modal-meta"><span>城堡</span><span>北九州</span><span>互動展示</span><span>建議停留：60–90 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/kokura-castle.webp" alt="小倉城 圖片"><img src="images/kokura-castle.webp" alt="小倉城 圖片"></div>
+          <p>小倉城是 Day 3 的開場。它位於北九州市小倉北區，從小倉站步行即可抵達。GLTJP 與官方資訊都把它視為小倉代表景點之一。對這趟旅程來說，小倉城不是要拿來和姬路城、松本城那種名城比壯觀，而是作為北九州城市脈絡的入口。它會讓旅客先理解小倉曾是區域政治與交通的重要節點，再去門司港看貿易與海峽。</p><p>小倉城的有趣之處在於它很現代化。很多日本城堡的內部已經不是原始狀態，而是被改造成展示館、觀光設施、互動體驗空間。這一點有些人會覺得不夠古樸，但從產品與體驗設計角度看很值得觀察：地方政府與觀光單位如何把歷史包裝成一般旅客看得懂、願意停留、願意拍照的內容。</p><p>各位可以注意城堡與周邊城市的關係。小倉城附近有小倉城庭園、八坂神社、Riverwalk 北九州等設施，傳統象徵、宗教空間、現代商業與河岸景觀被放在很近的範圍內。這不是一個孤立古蹟，而是被現代城市重新包圍、重新使用的歷史符號。</p><p>行程上建議小倉城簡單看，不必把 Day 3 變成小倉深度遊。各位可以停留 60 到 90 分鐘，拍外觀、進天守看展示、在周邊散步，之後把下午主力留給門司港。這樣 Day 3 的節奏會比較舒服：上午看城與城市權力，下午看港口與近代貿易，晚上回博多吃牛腸鍋。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它不需要看得太久，但能讓 Day 3 從港口之外多一層城下町與地方權力的脈絡。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>天守閣與周邊城市的關係</li><li>館內展示如何讓歷史變得娛樂化</li><li>小倉城、庭園、Riverwalk 形成的都市空間</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-mojiko" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/mojiko-retro.webp" alt="門司港懷舊區"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 3 · 深度景點介紹</div>
+      <h2 class="modal-title">門司港懷舊區</h2>
+      <p class="modal-subtitle">明治以來的國際貿易港，被重新整理成可步行的港町歷史街區。</p>
+      <div class="modal-meta"><span>港口城市</span><span>近代建築</span><span>城市再生</span><span>建議停留：2–3 小時</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/mojiko-retro.webp" alt="門司港懷舊區 圖片"><img src="images/mojiko-port.webp" alt="門司港懷舊區 圖片"></div>
+          <p>門司港懷舊區是這趟福岡五天中最值得用『城市觀察』角度看的地方之一。它位於九州最北端，面向關門海峽，對岸是本州山口縣下關。GLTJP 的景點資料說明，門司港在明治初期開港，因國際貿易港而繁榮，至今仍保留多座明治至昭和初期的歷史建築。這種背景讓它不只是漂亮街區，而是一個港口城市轉型的案例。</p><p>門司港的關鍵是『曾經的功能』與『現在的展示』之間的落差。過去它是貨物流動、鐵路與海運交接、國際貿易的實用港口；現在則透過復古建築、展望室、餐飲、博物館與散步路線，變成旅客可以消費的歷史風景。這種轉變很有意思：城市不是把過去完全抹掉，而是挑選某些可被欣賞、可被拍照、可被敘事的元素，重新包裝成『懷舊』。</p><p>各位可以特別看 JR 門司港站。這座車站在 2019 年完成整修，重現大正時代木造兩層樓建築，也保留與旅客服務、歷史展示相關的空間。車站本身就是門司港的入口，也是鐵路與港口連動的象徵。接著可以慢慢走到舊大阪商船、舊門司三井俱樂部、門司港懷舊展望室、港邊步道。每個點不一定都要進去，但整體路線要慢慢走。</p><p>門司港也有很強的邊界感。關門海峽讓旅客意識到這裡不是九州內部，而是九州與本州的接口。港口、橋、船、鐵路與海風共同構成一種『轉運站』氣質。這比單純神社或商場更符合這趟旅程的深度取向。各位不需要把門司港逛得很趕，反而應該留時間看建築、看海、吃焗烤咖哩，讓它成為 Day 3 的主角。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>這是 Day 3 真正的主角，比柳川更符合這趟旅程需要的城市觀察與歷史層次。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>門司港站、舊大阪商船等建築</li><li>港口如何轉型成觀光街區</li><li>海峽、船、鐵道、倉庫如何形成邊界城市感</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-kanmon" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/kanmon-strait.webp" alt="關門海峽"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 3 · 深度景點介紹</div>
+      <h2 class="modal-title">關門海峽</h2>
+      <p class="modal-subtitle">九州與本州之間的狹窄水道，讓門司港有真正的地理張力。</p>
+      <div class="modal-meta"><span>地理邊界</span><span>關門橋</span><span>海峽景觀</span><span>建議停留：30–60 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/kanmon-strait.webp" alt="關門海峽 圖片"><img src="images/kanmon-strait.webp" alt="關門海峽 圖片"></div>
+          <p>關門海峽是門司港最重要的背景。沒有這道海峽，門司港可能只是另一個復古港町；有了關門海峽，它就變成九州與本州之間的邊界城市。這條狹窄水道連接瀨戶內海與日本海側海域，兩岸分別是福岡縣北九州市與山口縣下關市。當各位站在門司港看向對岸時，會很直觀地感受到日本列島不是抽象地圖，而是由海峽、橋、港口與交通線組成的地理系統。</p><p>關門橋是最醒目的符號，但真正有趣的是整個交通層次。橋負責汽車交通，海面有船隻往來，海底有人道與車道隧道，鐵路也以不同方式穿越區域。這讓關門海峽不是單純自然景觀，而是一個被工程、貿易、軍事、旅遊反覆使用的交通節點。對喜歡理解系統的人來說，這裡比表面看起來更值得停留。</p><p>若想加入關門人道隧道，導覽上的判斷是：可選，不必硬排。如果抵達門司港後體力很好，而且很想完成『從九州走到本州』這個體驗，可以加。但如果只想保持舒服節奏，站在門司港側看海峽、走港邊、上展望室，其實已經足夠。這趟行程不是收集成就，而是讓每一天有清楚主題。</p><p>觀察關門海峽時，可以把它想成一種『邊界的美學』。很多旅行者喜歡去城市中心，但邊界地帶常常更有故事：因為它涉及交換、防守、貿易、遷移與技術。門司港因為關門海峽而繁榮，也因為交通與港口功能變化而轉型。各位站在這裡看到的不是一片海，而是一座城市曾經為何重要的理由。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它能把門司港從復古街區提升成一個真正有地理與交通意義的地方。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>對岸下關與九州的距離感</li><li>橋、船、海流與城市天際線</li><li>是否要加走關門人道隧道</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-marine-world" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/marine-world.webp" alt="Marine World 海之中道"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 4 · 深度景點介紹</div>
+      <h2 class="modal-title">Marine World 海之中道</h2>
+      <p class="modal-subtitle">以九州海洋為主題的水族館，讓 Day 4 從城市切換到自然。</p>
+      <div class="modal-meta"><span>水族館</span><span>九州海洋</span><span>動物表演</span><span>建議停留：2–3 小時</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/marine-world.webp" alt="Marine World 海之中道 圖片"><img src="images/marine-world.webp" alt="Marine World 海之中道 圖片"></div>
+          <p>Marine World 海之中道是 Day 4 的主體之一。GLTJP 與觀光資料介紹它以『九州的大海』為主題，展示多種海洋生物，並透過海豚、海獅等表演讓參觀更容易進入。這個點很適合放進行程，因為它不是純科技娛樂，也不是單純自然景觀，而是以動物與海洋作為一種低壓的旅行切換。</p><p>水族館有一個值得觀察的角度：它不是把自然原樣搬進室內，而是把自然重新編排成可理解、可觀看、可停留的展示。魚缸大小、燈光、動線、說明牌、表演時刻表、紀念品店，都是體驗設計的一部分。對旅客來說，Marine World 不只是『看魚』，也可以看一個場館如何把九州海洋轉譯成旅客能吸收的內容。</p><p>因為今天安排的是 Marine World 加上海之中道海濱公園，所以水族館不必逛到透支。建議先看官方當日表演時刻，抓最想看的 1 到 2 個表演，其餘展區順著動線走即可。各位不需要每一個魚缸都讀完說明，否則下午公園會失去餘裕。</p><p>這天的心理功能也很重要。前兩天我們看了博多、太宰府、九博；第三天看了小倉與門司港。到第四天，如果還繼續排城市與歷史，大腦會疲勞。Marine World 讓旅客以比較直覺的方式旅行：看動物、看水、看表演、放鬆。深度旅行不代表每天都要讀很多歷史，有時候把節奏換掉，反而能讓整趟旅行更完整。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>若想安排動物與自然元素，這裡剛好能讓旅行放鬆，同時仍有九州自然環境的脈絡。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>展區如何呈現九州周邊海域</li><li>表演如何把知識轉成娛樂</li><li>親子客層與一般旅客動線差異</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-uminonakamichi" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/uminonakamichi-seaside-park.jpg" alt="海之中道海濱公園"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 4 · 深度景點介紹</div>
+      <h2 class="modal-title">海之中道海濱公園</h2>
+      <p class="modal-subtitle">巨大海濱國營公園，有花、草地、動物之森與海邊空氣。</p>
+      <div class="modal-meta"><span>國營公園</span><span>動物之森</span><span>四季花卉</span><span>建議停留：90–150 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/uminonakamichi-seaside-park.jpg" alt="海之中道海濱公園 圖片"><img src="images/uminonakamichi-seaside-park.jpg" alt="海之中道海濱公園 圖片"></div>
+          <p>海之中道海濱公園位於福岡市東區、博多灣對岸的沙洲上，是一座非常大的國營公園。GLTJP 資料指出，園區約 350 公頃，四季有花卉，也有動物之森、大草坪、遊樂設施與長距離自行車道。這裡的關鍵不是『全部走完』，而是從巨大公園中挑出最適合這趟旅程需要的部分。</p><p>這趟旅程不採行軍式安排，所以海之中道要用刪減法。我們可以把它分成幾種元素：第一是花與草地，提供視覺開闊感；第二是動物之森，可以近距離看小動物，也符合這趟想加入動物與自然元素的需求；第三是海邊與風，讓旅客從都市密度中抽離。這三個元素抓到就夠了，不需要在園區內追逐所有設施。</p><p>從城市觀察角度看，海之中道也有意思。它不是市中心的小公園，而是城市邊緣的大型休閒基礎設施。這類地方通常服務家庭、情侶、觀光客與在地居民，透過季節花卉、活動、遊樂設施與動物展示，讓人反覆造訪。它不像太宰府有濃厚歷史敘事，但它呈現的是現代都市如何提供休閒與自然接觸。</p><p>實際安排上，建議各位先去 Marine World，再進海濱公園。因為水族館的表演與展區比較需要時間控制，公園則比較適合彈性處理。天氣好就多走一點，天氣差就縮短。到現場時請接受『沒有走完』這件事，因為這座公園本來就不是一天內完整攻略型景點。它的價值在於讓 Day 4 變得鬆、開闊、有動物、有海。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它讓旅客在福岡行程中有真正開闊的自然感，但策略是只抓重點，不必走完整個園區。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>巨大公園如何分區</li><li>花卉、草地、動物與海邊的組合</li><li>天氣如何影響體驗品質</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-ohori" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/ohori-park.webp" alt="大濠公園"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 5 · 深度景點介紹</div>
+      <h2 class="modal-title">大濠公園</h2>
+      <p class="modal-subtitle">福岡市中心的都市綠洲，用安靜方式結束旅程。</p>
+      <div class="modal-meta"><span>都市公園</span><span>水池步道</span><span>市民生活</span><span>建議停留：60–90 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/ohori-park.webp" alt="大濠公園 圖片"><img src="images/ohori-park.webp" alt="大濠公園 圖片"></div>
+          <p>大濠公園很適合放在最後一天。它位於福岡市中心，交通簡單，風險低，不需要預約，也不會讓旅客在回程日前感到焦慮。GLTJP 介紹大濠公園是福岡市民休憩的都市綠洲，巨大水池與周邊步道構成很舒服的散步空間。對不想最後一天狼狽趕行程的旅客來說，這是很好的收尾。</p><p>大濠公園的水池與福岡城的護城河歷史有關，這讓它不只是現代公園。我們可以把它和旁邊的福岡城跡一起看：過去的防禦與權力空間，轉化成現在的公共休閒空間。這種轉化很有意思，因為城市的歷史不一定以博物館形式存在，有時候它會變成跑步道、湖邊長椅、咖啡廳與家庭散步路線。</p><p>現場最值得看的其實是人。早晨或上午，各位可能會看到跑步者、散步的老人、帶小孩的家庭、遊客與附近居民。這些人如何使用公園，會讓旅客理解福岡的生活品質。旅行不一定每一刻都要看古蹟，有時候看一座城市如何讓人舒服地生活，也是一種很重要的深度。</p><p>如果各位對攝影或構圖有興趣，大濠公園也很好練習。水面、橋、樹、城市背景、人群，都是乾淨的構圖元素。最後一天建議各位不要走太快，繞一部分湖就好，再去福岡城跡或回博多。這種安靜收尾，會讓五天行程比較有餘韻，而不是最後只記得趕飛機。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>最後一天不該再跑遠，大濠公園能用低壓方式收尾，也能看見福岡市民日常。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>水池、步道與跑步人群</li><li>城市公園如何承接歷史護城河空間</li><li>公園周邊住宅與文化設施</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  <article class="modal-content" id="modal-fukuoka-castle" hidden>
+    <button class="modal-close" aria-label="關閉">×</button>
+    <div class="modal-hero"><img src="images/fukuoka-castle-ruins.webp" alt="福岡城跡"></div>
+    <div class="modal-body">
+      <div class="modal-kicker">Day 5 · 深度景點介紹</div>
+      <h2 class="modal-title">福岡城跡</h2>
+      <p class="modal-subtitle">黑田家的城跡，讓大濠公園旁的城市空間多了歷史深度。</p>
+      <div class="modal-meta"><span>城跡</span><span>黑田長政</span><span>舞鶴公園</span><span>建議停留：45–75 分鐘</span></div>
+      <div class="modal-layout">
+        <div class="modal-article">
+          <div class="gallery"><img src="images/fukuoka-castle-ruins.webp" alt="福岡城跡 圖片"><img src="images/fukuoka-castle-ruins.webp" alt="福岡城跡 圖片"></div>
+          <p>福岡城跡位於舞鶴公園一帶，適合接在大濠公園之後。這裡曾是福岡藩黑田家的居城，由黑田長政在江戶時代初期開始建造。今天看到的主要是石垣、城門遺構、天守台與公園化後的空間，而不是完整復原的城堡。也因為如此，它的美感比較含蓄，需要一點背景知識才看得出味道。</p><p>福岡城跡的核心價值在於『殘存』。完整復原的城堡容易讓人覺得壯觀，但城跡會逼大家想像過去的城市結構：城牆如何圍合空間？武士政權如何控制地形？城下町如何向外發展？現在這些權力與防禦功能消失後，又如何變成市民散步、賞花、運動的公園？這種轉換其實比單純看天守閣更有城市史意義。</p><p>如果從大濠公園走過來，會很容易感覺到水、石垣、綠地之間的關係。大濠公園的開闊水面讓人放鬆，福岡城跡的石垣則提醒旅客這裡曾經是防禦與統治的空間。兩個點放在最後一天一起看，會讓旅客以很平穩的方式回顧整趟旅程：從博多商業、太宰府信仰、門司港貿易，到福岡城的政治記憶。</p><p>實際參觀時，不需要把所有遺構都找完。各位可以抓天守台、石垣、城門、展望點幾個核心，搭配簡單散步。最後一天最重要的是不累、不趕。福岡城跡不是用來製造高潮的景點，而是讓旅程收束的地方：各位會感覺這座城市不是只有拉麵和購物，也曾經有自己的權力中心與歷史深度。</p>
+        </div>
+        <aside class="modal-side">
+          <h4>為什麼要看這裡</h4>
+          <p>它適合跟大濠公園一起看，理解權力空間如何變成今日市民公園。</p>
+          <h4>現場觀察重點</h4>
+          <ul><li>石垣、城門、天守台等遺構</li><li>城跡與舞鶴公園、大濠公園的連接</li><li>春季櫻花或季節景觀如何改變體驗</li></ul>
+        </aside>
+      </div>
+    </div>
+  </article>
+  </div>
+</div>
+
+<script>
+(function(){
+  const overlay = document.getElementById('modalOverlay');
+  const contents = Array.from(document.querySelectorAll('.modal-content'));
+  let lastFocus = null;
+
+  function openModal(id){
+    lastFocus = document.activeElement;
+    contents.forEach(el => el.hidden = true);
+    const target = document.getElementById('modal-' + id);
+    if(!target) return;
+    target.hidden = false;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    const close = target.querySelector('.modal-close');
+    if(close) close.focus();
+  }
+
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    contents.forEach(el => el.hidden = true);
+    if(lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('[data-modal]');
+    if(btn) {
+      openModal(btn.getAttribute('data-modal'));
+      return;
+    }
+    if(e.target.classList.contains('modal-close')) {
+      closeModal();
+      return;
+    }
+    if(e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+  });
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
