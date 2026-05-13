@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 2,
+  "template": "travelGuide",
+  "theme": "guidebookWarm",
+  "meta": {
+    "id": "component-demo",
+    "title": "旅遊書元件展示 Demo｜JSON Block Component Catalog",
+    "language": "zh-Hant",
+    "printLabel": "列印 / 存成 PDF"
+  },
+  "content": {
+    "entities": [
+      {
+        "id": "demo-station",
+        "type": "station",
+        "title": "中央車站示範點",
+        "subtitle": "示範 station 類型 entity，也可以被 dailyRoute、recommendedStops 或 transportGuide 重複引用。",
+        "image": {
+          "src": "data/fukuoka/images/hakata-station.jpg",
+          "alt": "中央車站示範點"
+        },
+        "tags": [
+          "station",
+          "交通基地",
+          "可重複引用"
+        ],
+        "summary": [
+          "這個 entity 用來示範交通節點。它可以出現在路線、住宿基地、每日集合點或詳細彈窗中。"
+        ],
+        "detail": {
+          "kicker": "Entity Detail Demo",
+          "gallery": [
+            {
+              "src": "data/fukuoka/images/hakata-station.jpg",
+              "alt": "車站外觀"
+            },
+            {
+              "src": "data/fukuoka/images/canal-city-hakata.jpg",
+              "alt": "周邊商業設施"
+            }
+          ],
+          "paragraphs": [
+            "entity 是可重複使用的內容單位。旅遊書裡的景點、車站、餐廳、飯店、自然區域都可以用同一種結構管理。",
+            "recommendedStops block 只需要引用 entityId，就可以把 entity 的圖片、標題、摘要與 detail 透過 Dialog 呈現出來。"
+          ],
+          "side": {
+            "title": "適合放什麼",
+            "body": "適合放不只會出現一次的內容，例如車站、飯店、餐廳、景點或區域。",
+            "pointsTitle": "目前支援",
+            "points": [
+              "image / tags / summary",
+              "detail paragraphs",
+              "gallery",
+              "side note"
+            ]
+          }
+        },
+        "address": {
+          "label": "示範地址",
+          "text": "福岡県福岡市博多区博多駅中央街1-1",
+          "query": "Hakata Station, Fukuoka"
+        }
+      },
+      {
+        "id": "demo-place",
+        "type": "place",
+        "title": "文化景點示範點",
+        "subtitle": "示範 place 類型 entity，通常會用在每日推薦停靠點。",
+        "image": {
+          "src": "data/fukuoka/images/kushida-shrine.webp",
+          "alt": "文化景點示範點"
+        },
+        "tags": [
+          "place",
+          "文化",
+          "深度介紹"
+        ],
+        "summary": [
+          "這個 entity 用來示範文化景點。列表可以只顯示短摘要，點開後再顯示完整深度內容。"
+        ],
+        "detail": {
+          "kicker": "Place Detail Demo",
+          "gallery": [
+            {
+              "src": "data/fukuoka/images/kushida-shrine.webp",
+              "alt": "文化景點主圖"
+            },
+            {
+              "src": "data/fukuoka/images/dazaifu-tenmangu.webp",
+              "alt": "另一個文化景點示意"
+            }
+          ],
+          "paragraphs": [
+            "這裡示範景點的深度內容。資料不綁定 modal，而是放在 entity.detail；UI 目前用 shadcn/ui 風格 Dialog 呈現。",
+            "未來同一個 entity 可以在不同旅遊書、不同 day 或不同 block 被引用，不需要複製內容。"
+          ],
+          "side": {
+            "title": "內容策略",
+            "body": "列表保持可掃讀，深度內容留給 Dialog 或未來 inline 展開。",
+            "pointsTitle": "適合欄位",
+            "points": [
+              "觀察重點",
+              "停留時間",
+              "歷史背景",
+              "現場閱讀角度"
+            ]
+          }
+        },
+        "address": {
+          "label": "示範地址",
+          "text": "福岡県福岡市博多区上川端町1-41",
+          "query": "Kushida Shrine Fukuoka"
+        }
+      },
+      {
+        "id": "demo-food",
+        "type": "restaurant",
+        "title": "在地晚餐示範",
+        "subtitle": "示範 restaurant 類型 entity，可直接穿插在每日 recommendedStops 清單中。",
+        "image": {
+          "src": "data/fukuoka/images/food-mizutaki.jpg",
+          "alt": "在地晚餐示範"
+        },
+        "tags": [
+          "restaurant",
+          "晚餐",
+          "預約建議"
+        ],
+        "summary": [
+          "這個 entity 用來示範餐廳內容。餐廳不再由 foodPlan 獨立呈現，而是和景點、飯店、車站一起出現在每日清單。"
+        ],
+        "detail": {
+          "kicker": "Food Detail Demo",
+          "gallery": [
+            {
+              "src": "data/fukuoka/images/food-mizutaki.jpg",
+              "alt": "餐點示意"
+            },
+            {
+              "src": "data/fukuoka/images/food-motsunabe.jpg",
+              "alt": "另一種餐點示意"
+            }
+          ],
+          "paragraphs": [
+            "餐飲 entity 未來可以支援價格、預約、營業時間、適合安排在哪一天等欄位。",
+            "現在先維持通用 entity 結構，避免太早把 food schema 做死。"
+          ],
+          "side": {
+            "title": "可擴充方向",
+            "body": "之後可以補 restaurantList、mealPlan 或 bookingChecklist blocks。",
+            "pointsTitle": "可能欄位",
+            "points": [
+              "priceRange",
+              "reservation",
+              "area",
+              "bestFor"
+            ]
+          },
+          "videos": [
+            {
+              "provider": "youtube",
+              "url": "https://www.youtube.com/watch?v=LIEI0dM2oNw",
+              "title": "Modal 內 YouTube 嵌入示範",
+              "caption": "entity.detail.videos[] 會在 modal 內容上方呈現。"
+            }
+          ]
+        },
+        "address": {
+          "label": "示範地址",
+          "text": "福岡市博多区周辺の餐廳示範地址",
+          "query": "motsunabe restaurant Hakata Fukuoka"
+        }
+      },
+      {
+        "id": "demo-hotel",
+        "type": "hotel",
+        "title": "住宿基地示範飯店",
+        "subtitle": "示範 hotel 類型 entity，適合放每日集合點、入住提醒或住宿區域說明。",
+        "image": {
+          "src": "data/fukuoka/images/hakata-station.jpg",
+          "alt": "住宿基地示範飯店"
+        },
+        "tags": [
+          "hotel",
+          "住宿基地",
+          "集合點"
+        ],
+        "summary": [
+          "這個 entity 用來示範飯店或旅館類型。它可以和景點、餐廳、車站放在同一個 recommendedStops 清單中。"
+        ],
+        "detail": {
+          "kicker": "Hotel Detail Demo",
+          "gallery": [
+            {
+              "src": "data/fukuoka/images/hakata-station.jpg",
+              "alt": "飯店周邊示意"
+            },
+            {
+              "src": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+              "alt": "城市基地示意"
+            }
+          ],
+          "paragraphs": [
+            "飯店不只是住宿資料，也常是每日集合點、行李寄放點、交通判斷點。",
+            "把 hotel 做成 entity 之後，同一個住宿基地可以在多天行程中重複引用。"
+          ],
+          "side": {
+            "title": "適合內容",
+            "body": "適合放 check-in、行李、交通、附近機能與集合提醒。",
+            "pointsTitle": "可擴充欄位",
+            "points": [
+              "checkInTime",
+              "luggagePolicy",
+              "nearestStation",
+              "area"
+            ]
+          }
+        },
+        "address": {
+          "label": "示範地址",
+          "text": "福岡県福岡市博多区博多駅前",
+          "query": "Hakata Station hotels"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "cover",
+      "type": "cover",
+      "blocks": [
+        {
+          "type": "coverHero",
+          "data": {
+            "eyebrow": "COMPONENT CATALOG · TRAVEL GUIDE BLOCKS",
+            "title": [
+              "旅遊書元件展示",
+              "Demo Guidebook"
+            ],
+            "lead": "這本範例旅遊書把目前已實作的 semantic blocks 全部展示一次，用來討論 JSON 架構、元件視覺與後續擴充方向。",
+            "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+            "meta": [
+              "schemaVersion 2",
+              "固定 section + 自訂 blocks",
+              "entities repository",
+              "shadcn/ui Dialog"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "overview",
+      "type": "overview",
+      "navLabel": "架構總覽",
+      "blocks": [
+        {
+          "type": "guideIntro",
+          "data": {
+            "kicker": "Guide Intro",
+            "title": "guideIntro：旅遊書開場導讀",
+            "body": "這個 block 適合放目的地定位、閱讀方式、旅遊節奏，以及地圖或區位圖。它不是 hero，而是進入內容前的第一段導讀。",
+            "mapLabel": "地圖示範",
+            "maps": [
+              {
+                "src": "data/fukuoka/images/bg-around-japan.svg",
+                "alt": "區域位置示意"
+              },
+              {
+                "src": "data/fukuoka/images/bg-inside-japan.svg",
+                "alt": "國內位置示意"
+              }
+            ]
+          }
+        },
+        {
+          "type": "tripOverview",
+          "data": {
+            "kicker": "Trip Overview",
+            "title": "tripOverview：旅程概覽與摘要卡",
+            "note": "適合放全旅程摘要、每日節奏、交通方向、主題分配，並可搭配 table 與 cards。",
+            "tableTitle": "元件展示清單",
+            "table": {
+              "headers": [
+                "區塊",
+                "用途",
+                "狀態"
+              ],
+              "rows": [
+                [
+                  "coverHero",
+                  "封面 hero",
+                  "已展示"
+                ],
+                [
+                  "guideIntro",
+                  "導讀與地圖",
+                  "已展示"
+                ],
+                [
+                  "tripOverview",
+                  "概覽表格與摘要卡",
+                  "已展示"
+                ],
+                [
+                  "travelPreparation",
+                  "行前準備",
+                  "下一節展示"
+                ],
+                [
+                  "daily blocks",
+                  "每日行程內容",
+                  "Day 1 展示"
+                ],
+                [
+                  "sourceList",
+                  "資料來源與收尾",
+                  "後段展示"
+                ]
+              ]
+            },
+            "cards": [
+              {
+                "number": "01",
+                "title": "固定 section",
+                "paragraphs": [
+                  "一本旅遊書固定包含 cover、overview、preparation、days、sources；餐廳和飯店回到每日 stops 清單。"
+                ],
+                "route": []
+              },
+              {
+                "number": "02",
+                "title": "section 內 block 化",
+                "paragraphs": [
+                  "每個 section 內部都由 blocks[] 決定內容與順序。"
+                ],
+                "route": [
+                  "section",
+                  "blocks[]",
+                  "React renderer"
+                ]
+              },
+              {
+                "number": "03",
+                "title": "entity 可重複引用",
+                "paragraphs": [
+                  "景點、餐廳、車站等內容放在 content.entities[]，block 用 entityId 引用。"
+                ],
+                "route": [
+                  "entity",
+                  "entityId",
+                  "Dialog"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "videoFeature",
+          "data": {
+            "kicker": "Video Feature",
+            "title": "videoFeature：外層 YouTube 嵌入區塊",
+            "note": "這個 block 可以放在 overview、day 或其他 section 中，用來嵌入目的地介紹、店家介紹或交通教學影片。",
+            "video": {
+              "provider": "youtube",
+              "url": "https://www.youtube.com/watch?v=_VZv_Z9Aey4",
+              "title": "外層 YouTube 嵌入示範",
+              "caption": "videoFeature block 使用共用 YouTubeEmbed primitive。"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "type": "preparation",
+      "navLabel": "行前模組",
+      "blocks": [
+        {
+          "type": "travelPreparation",
+          "data": {
+            "kicker": "Travel Preparation",
+            "title": "travelPreparation：行前準備、提醒與 checklist",
+            "note": "這個 block 適合放出發前共識、訂位提醒、攜帶物、交通卡、天氣備案等。",
+            "cards": [
+              {
+                "number": "01",
+                "title": "資料準備",
+                "paragraphs": [
+                  "先確認目的地、旅行天數、住宿基地、航班或交通條件。"
+                ],
+                "route": []
+              },
+              {
+                "number": "02",
+                "title": "預約與票券",
+                "paragraphs": [
+                  "需要預約的餐廳、展覽、交通票券可集中在這裡提醒。"
+                ],
+                "route": [
+                  "餐廳",
+                  "票券",
+                  "備案"
+                ]
+              },
+              {
+                "number": "03",
+                "title": "閱讀策略",
+                "paragraphs": [
+                  "這裡可以說明旅遊書的使用方式，例如每天只抓一個主要方向。"
+                ],
+                "route": []
+              }
+            ],
+            "checklistTitle": "Checklist table 示範",
+            "checklist": {
+              "headers": [
+                "類型",
+                "建議"
+              ],
+              "rows": [
+                [
+                  "交通",
+                  "準備 IC 卡、確認機場到住宿基地的第一段路。"
+                ],
+                [
+                  "餐廳",
+                  "需要排隊或預約的餐點先標記，不要每天都排重餐。"
+                ],
+                [
+                  "天氣",
+                  "戶外日要有雨天備案，海邊或山區尤其需要。"
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "days",
+      "type": "days",
+      "navLabel": "每日模組",
+      "blocks": [
+        {
+          "type": "tripOverview",
+          "data": {
+            "kicker": "Days Section Intro",
+            "title": "days section 也可以先放 intro blocks",
+            "note": "這裡示範 days section 本身可以先放章節導讀，接著才開始每一天。",
+            "cards": [
+              {
+                "title": "Day 本身不是普通 block",
+                "paragraphs": [
+                  "Day 有自己的 id、number、title、navLabel 與 blocks[]，方便做導覽、列印與章節錨點。"
+                ],
+                "route": []
+              }
+            ]
+          }
+        }
+      ],
+      "days": [
+        {
+          "id": "day1",
+          "number": "Day 1",
+          "navLabel": "Day 1",
+          "title": "Daily blocks 完整示範",
+          "tagline": "這一天集中展示 dailyRoute、dayMedia、callout、dailySchedule、recommendedStops、detailsNote。",
+          "blocks": [
+            {
+              "type": "dailyRoute",
+              "data": {
+                "stops": [
+                  "中央車站",
+                  "文化景點",
+                  "河岸散步",
+                  "在地晚餐"
+                ]
+              }
+            },
+            {
+              "type": "dayMedia",
+              "data": {
+                "image": {
+                  "src": "data/fukuoka/images/nakasu-yatai.webp",
+                  "alt": "日行程主視覺"
+                },
+                "mapEmbed": "https://www.google.com/maps?q=%E5%8D%9A%E5%A4%9A%E9%A7%85%20%E6%AB%9B%E7%94%B0%E7%A5%9E%E7%A4%BE%20%E4%B8%AD%E6%B4%B2&output=embed",
+                "mapLabel": "Day 1 示範地圖"
+              }
+            },
+            {
+              "type": "callout",
+              "data": {
+                "label": "callout 示範：",
+                "text": "這種區塊適合放今日重點、風險提醒、雨天判斷或不要踩雷的導覽提示。"
+              }
+            },
+            {
+              "type": "dailySchedule",
+              "data": {
+                "title": "dailySchedule：每日時間配置",
+                "table": {
+                  "headers": [
+                    "時段",
+                    "安排"
+                  ],
+                  "rows": [
+                    [
+                      "上午",
+                      "抵達集合點，先建立交通與住宿座標。"
+                    ],
+                    [
+                      "中午",
+                      "簡單午餐，不安排太重的活動。"
+                    ],
+                    [
+                      "下午",
+                      "進入主要文化景點，保留散步時間。"
+                    ],
+                    [
+                      "晚上",
+                      "安排在地晚餐，視體力決定是否加夜間散步。"
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "type": "recommendedStops",
+              "data": {
+                "interaction": "dialog",
+                "items": [
+                  {
+                    "entityId": "demo-hotel",
+                    "title": "住宿基地示範飯店：每日集合與行李節點",
+                    "description": "飯店或旅館也可以是每日清單的一部分，用來提示集合、退房、寄放行李或交通判斷。",
+                    "meta": [
+                      "entity type: hotel",
+                      "住宿 / 集合點"
+                    ]
+                  },
+                  {
+                    "entityId": "demo-station",
+                    "title": "中央車站示範點：交通與住宿基地",
+                    "description": "這張卡片引用 station entity，點擊後會開啟 shadcn/ui Dialog。",
+                    "meta": [
+                      "entityId: demo-station",
+                      "interaction: dialog"
+                    ]
+                  },
+                  {
+                    "entityId": "demo-place",
+                    "title": "文化景點示範點：深度介紹內容",
+                    "description": "這張卡片引用 place entity，示範列表摘要與彈窗詳細內容分離。",
+                    "meta": [
+                      "entityId: demo-place",
+                      "可重複引用"
+                    ]
+                  },
+                  {
+                    "entityId": "demo-food",
+                    "title": "在地晚餐示範：餐廳穿插在每日清單中",
+                    "description": "餐廳現在和景點、車站、飯店一起出現在 recommendedStops，不再使用 foodPlan。",
+                    "meta": [
+                      "entity type: restaurant",
+                      "晚餐 / 預約"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "detailsNote",
+              "data": {
+                "summary": "detailsNote：可收合的補充說明",
+                "body": "這個 block 適合放為什麼這樣排、雨天備案、長輩或親子提醒、或者不想在主畫面佔太多篇幅的說明。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "day2",
+          "number": "Day 2",
+          "navLabel": "Day 2",
+          "title": "互動關閉與資料 fallback 示範",
+          "tagline": "這一天示範 recommendedStops 的 interaction: none，以及不同 entity type 仍可被辨識。",
+          "blocks": [
+            {
+              "type": "callout",
+              "data": {
+                "label": "自由排序：",
+                "text": "Day blocks 的順序完全由資料決定，所以 callout 可以放在 route 前面。"
+              }
+            },
+            {
+              "type": "dailyRoute",
+              "data": {
+                "stops": [
+                  "飯店",
+                  "市場",
+                  "公園",
+                  "機場"
+                ]
+              }
+            },
+            {
+              "type": "recommendedStops",
+              "data": {
+                "interaction": "none",
+                "items": [
+                  {
+                    "entityId": "demo-food",
+                    "title": "在地晚餐示範：不開 Dialog 的列表卡",
+                    "description": "interaction 設為 none 時，卡片只作為靜態內容顯示。",
+                    "meta": [
+                      "interaction: none",
+                      "food entity"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "dailySchedule",
+              "data": {
+                "title": "自由排序後的 schedule",
+                "table": {
+                  "headers": [
+                    "時段",
+                    "安排"
+                  ],
+                  "rows": [
+                    [
+                      "上午",
+                      "市場與街區觀察。"
+                    ],
+                    [
+                      "下午",
+                      "公園或室內備案。"
+                    ],
+                    [
+                      "傍晚",
+                      "前往機場或車站。"
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "type": "sources",
+      "navLabel": "來源與收尾",
+      "blocks": [
+        {
+          "type": "sourceList",
+          "data": {
+            "kicker": "Sources",
+            "title": "sourceList：資料來源清單",
+            "note": "這個 block 適合放官方網站、參考文章、圖片來源與出發前需要再次確認的連結。",
+            "links": [
+              {
+                "text": "TanStack Router 官方文件",
+                "url": "https://tanstack.com/router"
+              },
+              {
+                "text": "Zod 官方網站",
+                "url": "https://zod.dev/"
+              },
+              {
+                "text": "shadcn/ui 官方網站",
+                "url": "https://ui.shadcn.com/"
+              }
+            ]
+          }
+        },
+        {
+          "type": "guideFooter",
+          "data": {
+            "text": "guideFooter：這是旅遊書底部收尾文字，可放版本、版權、最後更新或內部備註。"
+          }
+        }
+      ]
+    }
+  ]
+}

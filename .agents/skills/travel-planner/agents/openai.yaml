@@ -1,0 +1,4 @@
+interface:
+  display_name: "Travel Planner"
+  short_description: "Guided trip planning with research and day-by-day review"
+  default_prompt: "Use $travel-planner to help me plan a trip through guided questions, research, day-by-day confirmation, and a final itinerary."
