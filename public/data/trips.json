@@ -50,21 +50,21 @@
       "actionLabel": "打開元件展示"
     },
     {
-      "id": "fukuoka",
-      "title": "福岡五天四夜城市導覽手冊",
-      "subtitle": "博多・太宰府・小倉・門司港・海之中道",
-      "description": "以博多為基地，串起城市生活、九州文化、港口歷史、海邊自然與在地餐桌。",
+      "id": "fukuoka-2026",
+      "title": "福岡五天四夜深度旅行手冊",
+      "subtitle": "博多・太宰府・柳川・海之中道・大濠公園",
+      "description": "以天神／中洲川端作為便利基地，串起博多地方信仰、太宰府古代文化、柳川水鄉、海之中道水族館與福岡城下町記憶。",
       "data": "data/fukuoka/trip.json",
       "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
       "imageAlt": "福岡城市導覽手冊封面",
       "days": 5,
       "nights": 4,
-      "base": "博多站周邊",
+      "base": "Tokyu Stay Fukuoka Tenjin / 天神南",
       "updated": "2026-05-13",
       "tags": [
         "城市觀察",
         "文化",
-        "海港",
+        "水鄉",
         "美食"
       ],
       "actionLabel": "打開福岡行程"

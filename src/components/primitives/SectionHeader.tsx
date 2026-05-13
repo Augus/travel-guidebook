@@ -15,7 +15,7 @@ export function SectionHeader({
     <div className={cn("mb-5 grid gap-4", className)}>
       <div>
         {kicker ? <div className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-[var(--accent)]">{kicker}</div> : null}
-        <h2 className="m-0 text-[clamp(27px,3vw,46px)] font-bold leading-[1.14] tracking-normal text-[var(--foreground)]">
+        <h2 className="m-0 text-2xl font-bold leading-tight tracking-normal text-[var(--foreground)] md:text-3xl">
           {title}
         </h2>
       </div>

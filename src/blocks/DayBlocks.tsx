@@ -1,6 +1,6 @@
 import { Building2, CircleHelp, ExternalLink, Hotel, Landmark, MapPin, Trees, Train, Utensils } from "lucide-react";
 import { AddressLink } from "../components/primitives/AddressLink";
-import { RouteTrail } from "../components/primitives/RouteTrail";
+import { RouteSegmentConnector, RouteTrail } from "../components/primitives/RouteTrail";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -58,6 +58,29 @@ const entityTypeMeta = {
   }
 } as const;
 
+const entityCardTypeClass = {
+  station: "border-[color:var(--type-station-card-border)] bg-[var(--type-station-card-bg)] group-hover:border-[color:var(--type-station-border)]",
+  place: "border-[color:var(--type-place-card-border)] bg-[var(--type-place-card-bg)] group-hover:border-[color:var(--type-place-border)]",
+  restaurant:
+    "border-[color:var(--type-restaurant-card-border)] bg-[var(--type-restaurant-card-bg)] group-hover:border-[color:var(--type-restaurant-border)]",
+  food: "border-[color:var(--type-restaurant-card-border)] bg-[var(--type-restaurant-card-bg)] group-hover:border-[color:var(--type-restaurant-border)]",
+  hotel: "border-[color:var(--type-hotel-card-border)] bg-[var(--type-hotel-card-bg)] group-hover:border-[color:var(--type-hotel-border)]",
+  lodging: "border-[color:var(--type-hotel-card-border)] bg-[var(--type-hotel-card-bg)] group-hover:border-[color:var(--type-hotel-border)]",
+  nature: "border-[color:var(--type-nature-card-border)] bg-[var(--type-nature-card-bg)] group-hover:border-[color:var(--type-nature-border)]",
+  commercial: "border-[color:var(--type-commercial-card-border)] bg-[var(--type-commercial-card-bg)] group-hover:border-[color:var(--type-commercial-border)]"
+} as const;
+
+const entitySecondaryBadgeClass = {
+  station: "border-[color:var(--type-station-badge-border)] bg-[var(--type-station-badge-bg)] text-[var(--type-station-fg)]",
+  place: "border-[color:var(--type-place-badge-border)] bg-[var(--type-place-badge-bg)] text-[var(--type-place-fg)]",
+  restaurant: "border-[color:var(--type-restaurant-badge-border)] bg-[var(--type-restaurant-badge-bg)] text-[var(--type-restaurant-fg)]",
+  food: "border-[color:var(--type-restaurant-badge-border)] bg-[var(--type-restaurant-badge-bg)] text-[var(--type-restaurant-fg)]",
+  hotel: "border-[color:var(--type-hotel-badge-border)] bg-[var(--type-hotel-badge-bg)] text-[var(--type-hotel-fg)]",
+  lodging: "border-[color:var(--type-hotel-badge-border)] bg-[var(--type-hotel-badge-bg)] text-[var(--type-hotel-fg)]",
+  nature: "border-[color:var(--type-nature-badge-border)] bg-[var(--type-nature-badge-bg)] text-[var(--type-nature-fg)]",
+  commercial: "border-[color:var(--type-commercial-badge-border)] bg-[var(--type-commercial-badge-bg)] text-[var(--type-commercial-fg)]"
+} as const;
+
 function getEntityTypeMeta(type?: string) {
   if (!type) {
     return {
@@ -76,8 +99,16 @@ function getEntityTypeMeta(type?: string) {
   );
 }
 
+function getEntityCardTypeClass(type?: string) {
+  return entityCardTypeClass[type as keyof typeof entityCardTypeClass] ?? "border-[var(--border)] bg-[var(--card)]";
+}
+
+function getEntitySecondaryBadgeClass(type?: string) {
+  return entitySecondaryBadgeClass[type as keyof typeof entitySecondaryBadgeClass] ?? "border-[var(--border)] bg-[var(--soft)] text-[var(--muted)]";
+}
+
 export function DailyRouteBlock({ block }: BlockProps<DailyRouteBlockType>) {
-  return <RouteTrail stops={block.data.stops} />;
+  return <RouteTrail stops={block.data.stops} stopTypes={block.data.stopTypes} segments={block.data.segments} />;
 }
 
 export function DayMediaBlock({ block }: BlockProps<DayMediaBlockType>) {
@@ -129,8 +160,8 @@ export function DailyScheduleBlock({ block }: BlockProps<DailyScheduleBlockType>
 
 export function RecommendedStopsBlock({ block, entities, scope, onOpenEntity }: BlockProps<RecommendedStopsBlockType>) {
   return (
-    <div className="grid gap-4">
-      {block.data.items.map((item) => {
+    <div className="route-flow">
+      {block.data.items.map((item, index) => {
         const entity = entities.get(item.entityId);
         const title = item.title ?? entity?.title ?? item.entityId;
         const image = item.image ?? entity?.image;
@@ -138,10 +169,16 @@ export function RecommendedStopsBlock({ block, entities, scope, onOpenEntity }: 
         const typeMeta = getEntityTypeMeta(entity?.type);
         const TypeIcon = typeMeta.Icon;
         const isInteractive = block.data.interaction === "dialog" && entity && scope && onOpenEntity;
+        const cardTypeClass = getEntityCardTypeClass(entity?.type);
+        const secondaryBadgeClass = getEntitySecondaryBadgeClass(entity?.type);
+        const marker = (
+          <span aria-hidden className={`route-flow-marker ${typeMeta.className}`}>
+            <TypeIcon className="h-4 w-4" />
+          </span>
+        );
         const content = (
-          <Card className="h-full transition group-hover:border-[var(--accent-2)] group-hover:shadow-[var(--shadow-soft)]">
-            <CardContent className="grid gap-4 md:grid-cols-[180px_1fr]">
-              {image ? <img className="h-[210px] w-full rounded-2xl object-cover md:h-[140px]" src={image.src} alt={image.alt} /> : null}
+          <Card className={`h-full transition group-hover:shadow-[var(--shadow-soft)] ${cardTypeClass}`}>
+            <CardContent className={image ? "grid gap-4 md:grid-cols-[minmax(0,1fr)_220px]" : "grid gap-4"}>
               <div>
                 <div className="mb-3 flex flex-wrap items-center gap-2">
                   <Badge className={typeMeta.className}>
@@ -149,7 +186,7 @@ export function RecommendedStopsBlock({ block, entities, scope, onOpenEntity }: 
                     {typeMeta.label}
                   </Badge>
                   {entity?.tags.slice(0, 2).map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
+                    <Badge className={secondaryBadgeClass} key={tag}>{tag}</Badge>
                   ))}
                 </div>
                 <h3 className="mb-3 text-2xl font-bold leading-tight">{title}</h3>
@@ -161,33 +198,41 @@ export function RecommendedStopsBlock({ block, entities, scope, onOpenEntity }: 
                 ) : null}
                 <div className="mt-3 flex flex-wrap gap-2">
                   {item.meta.map((meta) => (
-                    <Badge key={meta}>{meta}</Badge>
+                    <Badge className={secondaryBadgeClass} key={meta}>{meta}</Badge>
                   ))}
                 </div>
                 {!entity ? <p className="mt-2 text-sm text-[var(--accent)]">Unknown entity: {item.entityId}</p> : null}
               </div>
+              {image ? <img className="order-first h-[210px] w-full rounded-2xl object-cover md:order-none md:h-full md:min-h-[160px]" src={image.src} alt={image.alt} /> : null}
             </CardContent>
           </Card>
         );
 
         if (isInteractive) {
           return (
-            <button
-              className="group block w-full cursor-pointer rounded-[var(--radius-card)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
-              data-entity-id={item.entityId}
-              data-scope={scope}
-              key={item.entityId}
-              type="button"
-              onClick={() => onOpenEntity(scope, item.entityId)}
-            >
-              {content}
-            </button>
+            <div className="route-flow-step" key={`${item.entityId}-${index}`}>
+              {marker}
+              <button
+                className="group block w-full cursor-pointer rounded-[var(--radius-card)] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+                data-entity-id={item.entityId}
+                data-scope={scope}
+                type="button"
+                onClick={() => onOpenEntity(scope, item.entityId)}
+              >
+                {content}
+              </button>
+              {index < block.data.items.length - 1 ? <RouteSegmentConnector segment={block.data.segments[index]} /> : null}
+            </div>
           );
         }
 
         return (
-          <div data-entity-id={item.entityId} data-scope={scope} key={item.entityId}>
-            {content}
+          <div className="route-flow-step" key={`${item.entityId}-${index}`}>
+            {marker}
+            <div data-entity-id={item.entityId} data-scope={scope}>
+              {content}
+            </div>
+            {index < block.data.items.length - 1 ? <RouteSegmentConnector segment={block.data.segments[index]} /> : null}
           </div>
         );
       })}

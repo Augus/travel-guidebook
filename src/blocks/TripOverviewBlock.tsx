@@ -28,7 +28,7 @@ export function TripOverviewBlock({ block }: BlockProps<TripOverviewBlockType>) 
                 {card.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-                <RouteTrail stops={card.route} />
+                <RouteTrail stops={card.route} stopTypes={card.stopTypes} segments={card.segments} />
               </CardContent>
             </Card>
           ))}

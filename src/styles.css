@@ -41,6 +41,68 @@ canvas {
   max-width: 100%;
 }
 
+.route-flow {
+  --route-line-x: 28px;
+  position: relative;
+  display: grid;
+  gap: 0;
+  padding-left: 56px;
+}
+
+.route-flow::before {
+  content: "";
+  position: absolute;
+  bottom: 24px;
+  left: var(--route-line-x);
+  top: 24px;
+  border-left: 1px dashed color-mix(in srgb, var(--accent) 34%, transparent);
+}
+
+.route-flow-step {
+  position: relative;
+}
+
+.route-flow-marker {
+  position: absolute;
+  left: calc((var(--route-line-x) - 56px) - 18px);
+  top: 34px;
+  z-index: 1;
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border-width: 1.5px;
+  background-clip: padding-box;
+  box-shadow: 0 6px 18px rgba(70, 50, 25, 0.09);
+}
+
+.route-flow-connector {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding: 18px 0 18px 18px;
+}
+
+@media (max-width: 720px) {
+  .route-flow {
+    --route-line-x: 18px;
+    padding-left: 34px;
+  }
+
+  .route-flow-marker {
+    left: calc((var(--route-line-x) - 34px) - 16px);
+    width: 32px;
+    height: 32px;
+  }
+
+  .route-flow-connector {
+    padding-left: 12px;
+  }
+}
+
 [data-theme="guidebookWarm"] {
   --background: linear-gradient(180deg, #f4efe5 0%, #faf7ef 45%, #f1eadf 100%);
   --foreground: #1f2523;
@@ -60,27 +122,64 @@ canvas {
   --nav-bg: rgba(246, 242, 234, 0.86);
   --map-bg: #f7f2df;
   --table-head: #4f4336;
+  --table-zebra: rgba(239, 230, 216, 0.28);
+  --route-overview-bg: rgba(238, 244, 239, 0.46);
+  --route-overview-border: rgba(47, 94, 89, 0.16);
+  --route-pill-bg: rgba(217, 232, 220, 0.72);
+  --route-pill-border: rgba(47, 94, 89, 0.3);
+  --route-pill-fg: #274d49;
+  --route-overview-arrow: rgba(47, 94, 89, 0.58);
   --callout: #eef4ef;
   --callout-foreground: #243530;
   --day-bg: linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(255, 250, 242, 0.86));
   --type-station-bg: #e3ebee;
   --type-station-border: #8ba8b1;
   --type-station-fg: #365d68;
+  --type-station-route-bg: rgba(227, 235, 238, 0.72);
+  --type-station-card-bg: rgba(227, 235, 238, 0.24);
+  --type-station-card-border: rgba(54, 93, 104, 0.22);
+  --type-station-badge-bg: rgba(227, 235, 238, 0.58);
+  --type-station-badge-border: rgba(54, 93, 104, 0.2);
   --type-place-bg: #e8e1ea;
   --type-place-border: #a58cad;
   --type-place-fg: #684c72;
+  --type-place-route-bg: rgba(232, 225, 234, 0.72);
+  --type-place-card-bg: rgba(232, 225, 234, 0.24);
+  --type-place-card-border: rgba(104, 76, 114, 0.22);
+  --type-place-badge-bg: rgba(232, 225, 234, 0.58);
+  --type-place-badge-border: rgba(104, 76, 114, 0.2);
   --type-restaurant-bg: #efe0d4;
   --type-restaurant-border: #b98868;
   --type-restaurant-fg: #7a4a2f;
+  --type-restaurant-route-bg: rgba(239, 224, 212, 0.74);
+  --type-restaurant-card-bg: rgba(239, 224, 212, 0.25);
+  --type-restaurant-card-border: rgba(122, 74, 47, 0.22);
+  --type-restaurant-badge-bg: rgba(239, 224, 212, 0.6);
+  --type-restaurant-badge-border: rgba(122, 74, 47, 0.2);
   --type-hotel-bg: #e3e2ee;
   --type-hotel-border: #8f8cab;
   --type-hotel-fg: #4d4a70;
+  --type-hotel-route-bg: rgba(227, 226, 238, 0.72);
+  --type-hotel-card-bg: rgba(227, 226, 238, 0.24);
+  --type-hotel-card-border: rgba(77, 74, 112, 0.22);
+  --type-hotel-badge-bg: rgba(227, 226, 238, 0.6);
+  --type-hotel-badge-border: rgba(77, 74, 112, 0.2);
   --type-nature-bg: #e4eadb;
   --type-nature-border: #91a772;
   --type-nature-fg: #52683a;
+  --type-nature-route-bg: rgba(228, 234, 219, 0.74);
+  --type-nature-card-bg: rgba(228, 234, 219, 0.26);
+  --type-nature-card-border: rgba(82, 104, 58, 0.22);
+  --type-nature-badge-bg: rgba(228, 234, 219, 0.62);
+  --type-nature-badge-border: rgba(82, 104, 58, 0.2);
   --type-commercial-bg: #efe7d2;
   --type-commercial-border: #bda15d;
   --type-commercial-fg: #745d25;
+  --type-commercial-route-bg: rgba(239, 231, 210, 0.74);
+  --type-commercial-card-bg: rgba(239, 231, 210, 0.24);
+  --type-commercial-card-border: rgba(116, 93, 37, 0.22);
+  --type-commercial-badge-bg: rgba(239, 231, 210, 0.6);
+  --type-commercial-badge-border: rgba(116, 93, 37, 0.2);
   --shadow: 0 18px 50px rgba(55, 43, 26, 0.12);
   --shadow-soft: 0 10px 35px rgba(70, 50, 25, 0.07);
   --shadow-modal: 0 30px 90px rgba(0, 0, 0, 0.35);

@@ -1,6 +1,12 @@
 import { z } from "zod";
 import { ImageSchema, TableSchema, VideoSchema } from "./common";
 
+const RouteSegmentSchema = z.object({
+  mode: z.string(),
+  duration: z.string(),
+  note: z.string().optional()
+});
+
 const CoverHeroBlockSchema = z.object({
   type: z.literal("coverHero"),
   data: z.object({
@@ -38,7 +44,9 @@ const TripOverviewBlockSchema = z.object({
           number: z.string().optional(),
           title: z.string(),
           paragraphs: z.array(z.string()).default([]),
-          route: z.array(z.string()).default([])
+          route: z.array(z.string()).default([]),
+          stopTypes: z.array(z.string()).default([]),
+          segments: z.array(RouteSegmentSchema).default([])
         })
       )
       .default([])
@@ -57,7 +65,9 @@ const TravelPreparationBlockSchema = z.object({
           number: z.string().optional(),
           title: z.string(),
           paragraphs: z.array(z.string()).default([]),
-          route: z.array(z.string()).default([])
+          route: z.array(z.string()).default([]),
+          stopTypes: z.array(z.string()).default([]),
+          segments: z.array(RouteSegmentSchema).default([])
         })
       )
       .default([]),
@@ -79,7 +89,9 @@ const VideoFeatureBlockSchema = z.object({
 const DailyRouteBlockSchema = z.object({
   type: z.literal("dailyRoute"),
   data: z.object({
-    stops: z.array(z.string()).default([])
+    stops: z.array(z.string()).default([]),
+    stopTypes: z.array(z.string()).default([]),
+    segments: z.array(RouteSegmentSchema).default([])
   })
 });
 
@@ -112,6 +124,7 @@ const RecommendedStopsBlockSchema = z.object({
   type: z.literal("recommendedStops"),
   data: z.object({
     interaction: z.enum(["dialog", "none"]).default("dialog"),
+    segments: z.array(RouteSegmentSchema).default([]),
     items: z
       .array(
         z.object({

@@ -11,7 +11,7 @@ export function SourceListBlock({ block }: BlockProps<SourceListBlockType>) {
           {block.data.kicker ? (
             <div className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-[var(--accent)]">{block.data.kicker}</div>
           ) : null}
-          <h2 className="m-0 text-[clamp(27px,3vw,46px)] font-bold leading-[1.14] tracking-normal text-[var(--foreground)]">
+          <h2 className="m-0 text-2xl font-bold leading-tight tracking-normal text-[var(--foreground)] md:text-3xl">
             {block.data.title}
           </h2>
           {block.data.note ? <p className="mt-3 max-w-[760px] text-sm text-[var(--muted)]">{block.data.note}</p> : null}
