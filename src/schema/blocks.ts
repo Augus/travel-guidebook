@@ -18,6 +18,12 @@ const CoverHeroBlockSchema = z.object({
   })
 });
 
+const ArticleGuideDataSchema = z.object({
+  buttonLabel: z.string().default("Read More"),
+  articleTitle: z.string(),
+  content: z.string()
+});
+
 const GuideIntroBlockSchema = z.object({
   type: z.literal("guideIntro"),
   data: z.object({
@@ -25,6 +31,7 @@ const GuideIntroBlockSchema = z.object({
     title: z.string(),
     body: z.string().optional(),
     mapLabel: z.string().optional(),
+    articleGuide: ArticleGuideDataSchema.optional(),
     video: VideoSchema.optional(),
     maps: z.array(ImageSchema).default([])
   })
