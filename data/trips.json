@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "旅遊書總目錄",
+    "language": "zh-Hant"
+  },
+  "hero": {
+    "eyebrow": "TRIP LIBRARY",
+    "title": [
+      "旅遊書總目錄"
+    ],
+    "lead": "選擇一份行程開始閱讀。每份行程都有固定 ID，頁面會依照 ID 載入對應的 JSON 資料源。",
+    "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+    "meta": [
+      "目前 1 份行程",
+      "以 JSON 管理資料源",
+      "可擴充多個目的地"
+    ]
+  },
+  "nav": [
+    {
+      "href": "#trips",
+      "label": "行程清單"
+    }
+  ],
+  "catalog": {
+    "kicker": "Trips",
+    "title": "行程清單",
+    "note": ""
+  },
+  "trips": [
+    {
+      "id": "fukuoka",
+      "title": "福岡五天四夜城市導覽手冊",
+      "subtitle": "博多・太宰府・小倉・門司港・海之中道",
+      "description": "以博多為基地，串起城市生活、九州文化、港口歷史、海邊自然與在地餐桌。",
+      "data": "data/fukuoka/trip.json",
+      "image": "data/fukuoka/images/hero-fukuoka-cover.jpg",
+      "imageAlt": "福岡城市導覽手冊封面",
+      "days": 5,
+      "nights": 4,
+      "base": "博多站周邊",
+      "updated": "2026-05-13",
+      "tags": [
+        "城市觀察",
+        "文化",
+        "海港",
+        "美食"
+      ],
+      "actionLabel": "打開福岡行程"
+    }
+  ],
+  "footer": ""
+}
