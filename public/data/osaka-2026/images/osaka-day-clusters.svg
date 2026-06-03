@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="36" fill="#f6efe4"/>
+  <path d="M132 650 C238 540 328 500 420 430 C520 354 610 252 750 190 C870 136 982 118 1080 92" fill="none" stroke="#2f6f7a" stroke-width="18" opacity=".25"/>
+  <path d="M160 188 C330 220 440 280 560 352 S816 490 1040 512" fill="none" stroke="#b45f45" stroke-width="12" opacity=".26"/>
+  <text x="72" y="92" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#292621">每日區域集群</text>
+  <g>
+    <circle cx="485" cy="450" r="18" fill="#b45f45"/>
+    <circle cx="485" cy="450" r="7" fill="#fff7ed"/>
+    <text x="511" y="459" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#292621">1. Day 1 Minami</text>
+  </g>
+<g>
+    <circle cx="560" cy="300" r="18" fill="#b45f45"/>
+    <circle cx="560" cy="300" r="7" fill="#fff7ed"/>
+    <text x="586" y="309" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#292621">2. Day 2 Castle/Kita</text>
+  </g>
+<g>
+    <circle cx="230" cy="260" r="18" fill="#b45f45"/>
+    <circle cx="230" cy="260" r="7" fill="#fff7ed"/>
+    <text x="256" y="269" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#292621">3. Day 3 Kobe</text>
+  </g>
+<g>
+    <circle cx="540" cy="540" r="18" fill="#b45f45"/>
+    <circle cx="540" cy="540" r="7" fill="#fff7ed"/>
+    <text x="566" y="549" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#292621">4. Day 4 Tennoji/Horie</text>
+  </g>
+<g>
+    <circle cx="500" cy="470" r="18" fill="#b45f45"/>
+    <circle cx="500" cy="470" r="7" fill="#fff7ed"/>
+    <text x="526" y="479" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#292621">5. Day 5 Namba</text>
+  </g>
+</svg>
