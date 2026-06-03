@@ -12,7 +12,7 @@
     "lead": "選擇一份行程開始閱讀。",
     "image": "data/fukuoka-2026/images/hero-fukuoka-cover.jpg",
     "meta": [
-      "目前 1 份行程",
+      "目前 2 份行程",
       "自動整理資料"
     ]
   },
@@ -43,6 +43,28 @@
         "資料來源"
       ],
       "actionLabel": "Open 福岡五天四夜旅行手冊｜博多・太宰府・柳川・海之中道・大濠公園"
+    },
+    {
+      "id": "osaka-2026",
+      "title": "大阪五天四夜旅行手冊｜大阪市區深度・神戶一日遊",
+      "subtitle": "大阪五天四夜 市區深度與神戶一日遊",
+      "description": "避開串炸與天神祭煙火人潮，用難波、心齋橋、中之島、梅田、天王寺、堀江與神戶港邊，做一趟夏天也走得動的大阪旅行。",
+      "data": "data/osaka-2026/trip.json",
+      "image": "data/osaka-2026/images/hero-osaka-cover.jpg",
+      "imageAlt": "大阪五天四夜旅行手冊｜大阪市區深度・神戶一日遊 cover",
+      "days": 5,
+      "nights": 4,
+      "base": "本町 / 淀屋橋 / 北濱；次選難波 / 心齋橋",
+      "dateRange": "2026/7/25（六） 到 7/29（三）",
+      "updated": "2026-06-03",
+      "tags": [
+        "旅程概覽",
+        "行前準備",
+        "每日行程",
+        "美食策略",
+        "資料來源"
+      ],
+      "actionLabel": "Open 大阪五天四夜旅行手冊｜大阪市區深度・神戶一日遊"
     }
   ],
   "footer": ""
